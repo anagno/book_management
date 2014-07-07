@@ -1,0 +1,22 @@
+% This file was created with JabRef 2.7b.
+% Encoding: UTF-8
+
+
+
+@MISC{class_notes,
+  author = {Γιάννης Θεοδωρίδης},
+  title = {Σημειώσεις διδασκαλίας για το μάθημα "Βάσεις Δεδομένων"},
+  howpublished = {Σημειώσεις μαθήματος},
+  year = {2013},
+  institution = {Πανεπιστήμιο Πειραιώς}
+}
+
+@MISC{wiki:Entity_relationship_model,
+  author = {Wikipedia},
+  title = {Entity–relationship model --- {W}ikipedia{,} The Free Encyclopedia},
+  howpublished = {\url{http://en.wikipedia.org/wiki/Entity\%E2\%80\%93relationship_model}},
+  note = {[Πρόσβαση στις 6 Ιουλίου 2014]},
+  timestamp = {2014.07.06},
+  url = {http://en.wikipedia.org/wiki/Entity\%E2\%80\%93relationship_model}
+}
+
