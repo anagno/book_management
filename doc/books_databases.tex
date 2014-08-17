@@ -4,9 +4,9 @@
 \usepackage{enumerate} % Για την χρησιμοποίηση roman enumerate
 \usepackage{pdflscape}
 
-\university{Πανεπιστήμιο Πειραιώς}{Πα.Πει.}
-\school{Τμήμα Πληροφορικής}{Π.Μ.Σ. "Πληροφορική"}
-\department{Πρόγραμμα Μεταπτυχιακών Σπουδών «Πληροφορική»}{}
+%\university{Πανεπιστήμιο Πειραιώς}{Πα.Πει.}
+%\school{Τμήμα Πληροφορικής}{Π.Μ.Σ. "Πληροφορική"}
+%\department{Πρόγραμμα Μεταπτυχιακών Σπουδών «Πληροφορική»}{}
 %\cover{images/cover.jpg}{http://www.cyberciti.biz/faq/grub-boot-into-single-user-mode/}
 
 \title{Βάσεις Δεδομένων \\ Εργασία Εξαμήνου}
@@ -36,7 +36,7 @@
 
 
 %\pagestyle{headings}
-\pagestyle{fancy}
+%\pagestyle{fancy}
 \setcounter{page}{1} 
 \pagenumbering{arabic}
 
@@ -208,7 +208,7 @@
 \begin{figure}
 \begin{center}
 \resizebox*{20.5cm}{!}{
-\includegraphics{images/Diagram.jpeg}}
+\includegraphics{images/ERDiagram.jpeg}}
 \caption{Διάγραμμα οντοτήτων - συσχετίσεων}
 \label{fig:ER:diagram}
 \end{center}
@@ -216,13 +216,38 @@
 \end{landscape}
 
 
-
-
-\subsection{Λογικός σχεδιασμός}
-
 Εδώ θα μπει το σχεσιακό μοντέλο της βάσεις που προκύπτει από το μοντέλο οντοτήτων - συσχετίσεων.
 
-Ο λογικός σχεδιασμός είναι η διαδικασία μετατροπής ενός εννοιλογικού μοντέλου (διαισθητικής περιγραφής) σε τυπικά σχήματα εκφρασμένα στο επιλεγέν (υποστηριζόμενο από το ΣΔΒΔ) μοντέλο δεδομένο (π.χ. Σχεσιακό μοντέλο) \cite{class_notes}.
+Ο λογικός σχεδιασμός είναι η διαδικασία μετατροπής ενός εννοιολογικού μοντέλου (διαισθητικής περιγραφής) σε τυπικά σχήματα εκφρασμένα στο επιλεγέν (υποστηριζόμενο από το ΣΔΒΔ) μοντέλο δεδομένο (π.χ. Σχεσιακό μοντέλο) \cite{class_notes}.
+
+\subsection{Μετατροπή μοντέλου οντοτήτων - συσχετίσεων σε σχεσιακό σχήμα}
+
+Οι κανόνες που χρησιμοποιούνται για την μετατροπή του μοντέλου οντοτήτων - συσχετίσεων σε σχεσιακό σχήμα φαίνονται παρακάτω \cite{class_notes}:
+
+\begin{description}
+
+  \item[Οντότητες:] Ένα ισχυρό σύνολο οντοτήτων μετατρέπεται σε πίνακα (με τα ίδια χαρακτηριστικά). Ένα αδύναμο σύνολο οντοτήτων γίνεται πίνακας που περιλαμβάνει μια στήλη για το πρωτεύον κλειδί του ισχυρότερου συνόλου οντοτήτων που το ταυτοποιεί. 
+  \item[Συσχετίσεις 1:1 :] Οι συσχετίσεις 1:1 μπορούν να αναπαρασταθούν είτε προσθέτοντας το πρωτεύον κλειδί της μία πλευράς ως επιπλέον χαρακτηριστικό στον πίνακα της άλλη πλευράς είτε να δημιουργηθεί νέος πίνακας που να έχει τα κλειδιά των δύο πινάκων.
+  \item[Συσχετίσεις 1:Ν :] Οι συσχετίσεις 1:Ν μπορούν να αναπαρασταθούν απλά με την προσθήκη ενός επιπλέον χαρακτηριστικού στην πλευρά Ν, με το πρωτεύον κλειδί τις πλευράς 1. Εάν η συμμετοχή στην πλευρά Ν είναι μερική, μπορεί να προκύψει η περίπτωση μία στήλη του πίνακα να έχει πολλές κενές τιμές. Οπότε η δημιουργία ενός νέου πίνακα συμφέρει.
+  \item[Συσχετίσεις Μ:Ν :] Ένα σύνολο συσχετίσεων M:N αναπαριστάται ως πίνακας με στήλες για τα πρωτεύοντα κλειδιά των οντοτήτων που συμμετέχουν, και επιπλέον όλα τα χαρακτηριστικά του συνόλου συσχετίσεων. 
+  \item[Σύνθετα χαρακτηριστικά :] Τα σύνθετα χαρακτηριστικά μετατρέπονται σε ένα σύνολο απλών.
+  \item[Πλειότιμα χαρακτηριστικά :] Από τα πλειότιμα χαρακτηριστικά ενός συνόλου οντοτήτων προκύπτει νέος πίνακας. Ο πίνακας αυτός έχεις ως στήλες το πρωτεύον κλειδί του συνόλου οντοτήτων και μία ακόμα που αντιστοιχεί στο πλειότιμο χαρακτηριστικό.
+  \item[Εξειδίκευση :] Όταν έχουμε εξειδίκευση, τότε προκύπτει ένας πίνακας για κάθε εμπλεκόμενο σύνολο οντοτήτων, όπου καθένας από τους πίνακες εξειδίκευσης συμπεριλαμβάνει ως στήλη το πρωτεύον κλειδί του πίνακα γενίκευσης.
+ 
+\end{description}
+
+\begin{landscape}
+\begin{figure}
+\begin{center}
+\resizebox*{25.5cm}{!}{
+\includegraphics{images/RelationalModel.jpeg}}
+\caption{Σχεσιακό σχήμα}
+\label{fig:RelationalModel:diagram}
+\end{center}
+\end{figure}
+\end{landscape}
+
+
 
 \subsubsection{Ανάλυση πινάκων}
 
@@ -233,6 +258,49 @@
 πίνακας με τις εξής στήλες (πεδίο, τύπος μεταβλητής, εύρος τιμών, περιγραφή, Πρωτεύον κλειδί(ναι ή όχι), NULL (ναι ή όχι ), ξένο κλειδί (ναί ή όχι).
 
 \subsection{Υλοποίηση}
+
+
+
+\begin{minted}{bash}
+$ mysql --user=root --password
+Enter password: 
+\end{minted} 
+
+%%$
+
+\begin{minted}[breaklines=true]{mysql}
+MariaDB [(none)]> CREATE USER 'book'@'localhost' IDENTIFIED BY 'book_password' ;
+
+MariaDB [(none)]> GRANT USAGE ON *.* TO 'book'@'localhost' IDENTIFIED BY 'book_password' WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
+
+MariaDB [(none)]> CREATE DATABASE `book` ;
+
+MariaDB [(none)]> GRANT ALL PRIVILEGES ON `book`.* TO 'book'@'localhost';
+
+\end{minted}
+
+\begin{minted}{bash}
+$ mysql --user=book --password
+Enter password: 
+\end{minted} 
+
+%%$
+
+\begin{minted}[breaklines=true]{mysql}
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| book               |
++--------------------+
+2 rows in set (0.00 sec)
+
+MariaDB [(none)]> use book;
+Database changed
+MariaDB [book]> 
+
+\end{minted}
 
 \phantomsection \label{Βιβλιογραφία}
 \addcontentsline{toc}{section}{Βιβλιογραφία}
