@@ -207,7 +207,7 @@
 \begin{landscape}
 \begin{figure}
 \begin{center}
-\resizebox*{20.5cm}{!}{
+\resizebox*{18.5cm}{!}{
 \includegraphics{images/ERDiagram.jpeg}}
 \caption{Διάγραμμα οντοτήτων - συσχετίσεων}
 \label{fig:ER:diagram}
@@ -251,11 +251,224 @@
 
 \subsubsection{Ανάλυση πινάκων}
 
-πρώτος πίνακας
+\begin{landscape}
+\begin{table}[htbp]
+\begin{center}
+  \begin{tabular}{|c|c|m{0.35\textwidth}|m{0.35\textwidth}|m{2.0cm}|c|m{1.5cm}|}
+    \hline
+    {\bf Πεδίο} & {\bf Τύπος μεταβλητής} & {\bf Εύρος τιμών} & {\bf Περιγραφή} & {\bf Πρωτεύον κλειδί} & {\bf Null} & {\bf Ξένο κλειδί} \\ \hline
+    id & INT UNSIGNED & 0 έως 4294967295 & Μοναδικός αριθμός που χρησιμεύει ως πρωτεύον κλειδί & ΝΑΙ & ΟΧΙ & ΟΧΙ \\ \hline
+    title & VARCHAR(100) & Όλα τα Αλφαριθμητικά ως 100 χαρακτήρες & Ο τίτλος του βιβλίου & ΟΧΙ & ΟΧΙ & ΟΧΙ \\ \hline
+    descritpion & TEXT & Όλα τα Αλφαριθμητικά & Μία περιγραφή του βιβλίου & ΟΧΙ & ΟΧΙ & ΟΧΙ \\ \hline
+  \end{tabular}
+\caption{Ο πίνακας books.}
+\label{table:db_table:books}
+\end{center}
+\end{table}
+%\end{landscape}
 
-δεύτερος πίνακας κ.λ.π.
+%\begin{landscape}
+\begin{table}[htbp]
+\begin{center}
+  \begin{tabular}{|c|c|m{0.35\textwidth}|m{0.35\textwidth}|m{2.0cm}|c|m{1.5cm}|}
+    \hline
+    {\bf Πεδίο} & {\bf Τύπος μεταβλητής} & {\bf Εύρος τιμών} & {\bf Περιγραφή} & {\bf Πρωτεύον κλειδί} & {\bf Null} & {\bf Ξένο κλειδί} \\ \hline
+    book-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:1 σχέσης με τον πίνακα books & OXI & ΟΧΙ & NAI \\ \hline
+  \end{tabular}
+\caption{Ο πίνακας paper.}
+\label{table:db_table:paper}
+\end{center}
+\end{table}
+\end{landscape}
 
-πίνακας με τις εξής στήλες (πεδίο, τύπος μεταβλητής, εύρος τιμών, περιγραφή, Πρωτεύον κλειδί(ναι ή όχι), NULL (ναι ή όχι ), ξένο κλειδί (ναί ή όχι).
+\begin{landscape}
+\begin{table}[htbp]
+\begin{center}
+  \begin{tabular}{|c|c|m{0.35\textwidth}|m{0.35\textwidth}|m{2.0cm}|c|m{1.5cm}|}
+    \hline
+    {\bf Πεδίο} & {\bf Τύπος μεταβλητής} & {\bf Εύρος τιμών} & {\bf Περιγραφή} & {\bf Πρωτεύον κλειδί} & {\bf Null} & {\bf Ξένο κλειδί} \\ \hline
+    id & INT UNSIGNED & 0 έως 4294967295 & Μοναδικός αριθμός που χρησιμεύει ως πρωτεύον κλειδί & ΝΑΙ & ΟΧΙ & ΟΧΙ \\ \hline
+    book-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:Ν σχέσης με τον πίνακα books & OXI & ΟΧΙ & NAI \\ \hline
+    location & VARCHAR(100) &  Όλα τα Αλφαριθμητικά ως 100 χαρακτήρες & Πεδίο που περιγράφει την φυσική τοποθεσία του βιβλίου & OXI & ΟΧΙ & ΟΧΙ \\ \hline
+  \end{tabular}
+\caption{Ο πίνακας paperbook.}
+\label{table:db_table:paperbook}
+\end{center}
+\end{table}
+\end{landscape}
+
+\begin{landscape}
+\begin{table}[htbp]
+\begin{center}
+  \begin{tabular}{|c|c|m{0.35\textwidth}|m{0.35\textwidth}|m{2.0cm}|c|m{1.5cm}|}
+    \hline
+    {\bf Πεδίο} & {\bf Τύπος μεταβλητής} & {\bf Εύρος τιμών} & {\bf Περιγραφή} & {\bf Πρωτεύον κλειδί} & {\bf Null} & {\bf Ξένο κλειδί} \\ \hline
+    book-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:1 σχέσης με τον πίνακα books & OXI & ΟΧΙ & NAI \\ \hline
+    path & VARCHAR(100) &  Όλα τα Αλφαριθμητικά ως 100 χαρακτήρες & Το path στο οποίο είναι αποθηκευμένα τα αρχεία των ηλεκτρονικών βιβλίων & OXI & ΟΧΙ & ΟΧΙ \\ \hline
+    cover & VARCHAR(100) &  Όλα τα Αλφαριθμητικά ως 100 χαρακτήρες & Το path στο οποίο είναι αποθηκευμένο το εξώφυλλο των ηλεκτρονικών βιβλίων & OXI & ΟΧΙ & ΟΧΙ \\ \hline
+  \end{tabular}
+\caption{Ο πίνακας ebook.}
+\label{table:db_table:ebook}
+\end{center}
+\end{table}
+\end{landscape}
+
+\begin{landscape}
+\begin{table}[htbp]
+\begin{center}
+  \begin{tabular}{|c|c|m{0.35\textwidth}|m{0.35\textwidth}|m{2.0cm}|c|m{1.5cm}|}
+    \hline
+    {\bf Πεδίο} & {\bf Τύπος μεταβλητής} & {\bf Εύρος τιμών} & {\bf Περιγραφή} & {\bf Πρωτεύον κλειδί} & {\bf Null} & {\bf Ξένο κλειδί} \\ \hline
+    id & INT UNSIGNED & 0 έως 4294967295 & Μοναδικός αριθμός που χρησιμεύει ως πρωτεύον κλειδί & ΝΑΙ & ΟΧΙ & ΟΧΙ \\ \hline
+    book-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:Ν σχέσης με τον πίνακα books & OXI & ΟΧΙ & NAI \\ \hline
+    format & VARCHAR(10) &  Όλα τα Αλφαριθμητικά ως 100 χαρακτήρες & Πεδίο που περιγράφει το format του ηλεκτρονικού βιβλίου & OXI & ΟΧΙ & ΟΧΙ \\ \hline
+    size & INT UNSIGNED & 0 έως 4294967295 & Πεδίο που περιγράφει το μέγεθος του ηλεκτρονικού βιβλίου σε bytes & OXI & ΟΧΙ & ΟΧΙ \\ \hline
+    name & VARCHAR(10) &  Όλα τα Αλφαριθμητικά ως 100 χαρακτήρες & Πεδίο που περιγράφει το όνομα του αρχείου του ηλεκτρονικού βιβλίου & OXI & ΟΧΙ & ΟΧΙ \\ \hline
+  \end{tabular}
+\caption{Ο πίνακας data.}
+\label{table:db_table:data}
+\end{center}
+\end{table}
+\end{landscape}
+
+\begin{landscape}
+\begin{table}[htbp]
+\begin{center}
+  \begin{tabular}{|c|c|m{0.35\textwidth}|m{0.35\textwidth}|m{2.0cm}|c|m{1.5cm}|}
+    \hline
+    {\bf Πεδίο} & {\bf Τύπος μεταβλητής} & {\bf Εύρος τιμών} & {\bf Περιγραφή} & {\bf Πρωτεύον κλειδί} & {\bf Null} & {\bf Ξένο κλειδί} \\ \hline
+    book-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:Μ σχέσης με τον πίνακα books & OXI & ΟΧΙ & NAI \\ \hline
+    type & VARCHAR(10) & Όλα τα Αλφαριθμητικά ως 10 χαρακτήρες & Περιγράφει το είδος του αναγνωριστικού του βιβλίου (ISBN, amazon id, κ.λ.π.)  & OXI & ΟΧΙ & ΟΧΙ \\ \hline
+    type & VARCHAR(20) & Όλα τα Αλφαριθμητικά ως 20 χαρακτήρες & Η τιμή του αναγνωριστικού  & OXI & ΟΧΙ & ΟΧΙ \\ \hline
+    language & VARCHAR(2) & Όλα τα Αλφαριθμητικά ως 2 χαρακτήρες & Συντομογραφία της γλώσσας στην οποία είναι γραμμένο το βιβλίο  & OXI & ΟΧΙ & ΟΧΙ \\ \hline
+  \end{tabular}
+\caption{Ο πίνακας identifiers.}
+\label{table::db_table:identifiers}
+\end{center}
+\end{table}
+\end{landscape}
+
+\begin{landscape}
+\begin{table}[htbp]
+\begin{center}
+  \begin{tabular}{|c|c|m{0.35\textwidth}|m{0.35\textwidth}|m{2.0cm}|c|m{1.5cm}|}
+    \hline
+    {\bf Πεδίο} & {\bf Τύπος μεταβλητής} & {\bf Εύρος τιμών} & {\bf Περιγραφή} & {\bf Πρωτεύον κλειδί} & {\bf Null} & {\bf Ξένο κλειδί} \\ \hline
+    id & INT UNSIGNED & 0 έως 4294967295 & Μοναδικός αριθμός που χρησιμεύει ως πρωτεύον κλειδί & ΝΑΙ & ΟΧΙ & ΟΧΙ \\ \hline
+    name & VARCHAR(100) & Όλα τα Αλφαριθμητικά ως 100 χαρακτήρες & Ο τίτλος του εκδότη & ΟΧΙ & ΟΧΙ & ΟΧΙ \\ \hline
+  \end{tabular}
+\caption{Ο πίνακας publishers.}
+\label{table:db_table:publishers}
+\end{center}
+\end{table}
+%\end{landscape}
+
+%\begin{landscape}
+\begin{table}[htbp]
+\begin{center}
+  \begin{tabular}{|c|c|m{0.35\textwidth}|m{0.35\textwidth}|m{2.0cm}|c|m{1.5cm}|}
+    \hline
+    {\bf Πεδίο} & {\bf Τύπος μεταβλητής} & {\bf Εύρος τιμών} & {\bf Περιγραφή} & {\bf Πρωτεύον κλειδί} & {\bf Null} & {\bf Ξένο κλειδί} \\ \hline
+    publisher-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:Μ σχέσης με τον πίνακα publishers & OXI & ΟΧΙ & NAI \\ \hline
+    book-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:Μ σχέσης με τον πίνακα books & OXI & ΟΧΙ & NAI \\ \hline
+    date & DATE & 1000-01-01 έως 9999-12-31 & Ημερομηνία έκδοσης του βιβλίου & OXI & ΟΧΙ & ΟΧΙ \\ \hline
+  \end{tabular}
+\caption{Ο πίνακας publish.}
+\label{table:db_table:publish}
+\end{center}
+\end{table}
+\end{landscape}
+
+\begin{landscape}
+\begin{table}[htbp]
+\begin{center}
+  \begin{tabular}{|c|c|m{0.35\textwidth}|m{0.35\textwidth}|m{2.0cm}|c|m{1.5cm}|}
+    \hline
+    {\bf Πεδίο} & {\bf Τύπος μεταβλητής} & {\bf Εύρος τιμών} & {\bf Περιγραφή} & {\bf Πρωτεύον κλειδί} & {\bf Null} & {\bf Ξένο κλειδί} \\ \hline
+    id & INT UNSIGNED & 0 έως 4294967295 & Μοναδικός αριθμός που χρησιμεύει ως πρωτεύον κλειδί & ΝΑΙ & ΟΧΙ & ΟΧΙ \\ \hline
+    name & VARCHAR(100) & Όλα τα Αλφαριθμητικά ως 100 χαρακτήρες & Το όνομα του συγγραφέα & ΟΧΙ & ΟΧΙ & ΟΧΙ \\ \hline
+  \end{tabular}
+\caption{Ο πίνακας authors.}
+\label{table:db_table:authors}
+\end{center}
+\end{table}
+%\end{landscape}
+
+%\begin{landscape}
+\begin{table}[htbp]
+\begin{center}
+  \begin{tabular}{|c|c|m{0.35\textwidth}|m{0.35\textwidth}|m{2.0cm}|c|m{1.5cm}|}
+    \hline
+    {\bf Πεδίο} & {\bf Τύπος μεταβλητής} & {\bf Εύρος τιμών} & {\bf Περιγραφή} & {\bf Πρωτεύον κλειδί} & {\bf Null} & {\bf Ξένο κλειδί} \\ \hline
+    author-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:Μ σχέσης με τον πίνακα authors & OXI & ΟΧΙ & NAI \\ \hline
+    book-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:Μ σχέσης με τον πίνακα books & OXI & ΟΧΙ & NAI \\ \hline
+  \end{tabular}
+\caption{Ο πίνακας writes.}
+\label{table:db_table:writes}
+\end{center}
+\end{table}
+\end{landscape}
+
+\begin{landscape}
+\begin{table}[htbp]
+\begin{center}
+  \begin{tabular}{|c|c|m{0.35\textwidth}|m{0.35\textwidth}|m{2.0cm}|c|m{1.5cm}|}
+    \hline
+    {\bf Πεδίο} & {\bf Τύπος μεταβλητής} & {\bf Εύρος τιμών} & {\bf Περιγραφή} & {\bf Πρωτεύον κλειδί} & {\bf Null} & {\bf Ξένο κλειδί} \\ \hline
+    id & INT UNSIGNED & 0 έως 4294967295 & Μοναδικός αριθμός που χρησιμεύει ως πρωτεύον κλειδί & ΝΑΙ & ΟΧΙ & ΟΧΙ \\ \hline
+    name & VARCHAR(100) & Όλα τα Αλφαριθμητικά ως 100 χαρακτήρες & Το όνομα του χρήστη & ΟΧΙ & ΟΧΙ & ΟΧΙ \\ \hline
+  \end{tabular}
+\caption{Ο πίνακας users.}
+\label{table:db_table:users}
+\end{center}
+\end{table}
+%\end{landscape}
+
+%\begin{landscape}
+\begin{table}[htbp]
+\begin{center}
+  \begin{tabular}{|c|c|m{0.35\textwidth}|m{0.35\textwidth}|m{2.0cm}|c|m{1.5cm}|}
+    \hline
+    {\bf Πεδίο} & {\bf Τύπος μεταβλητής} & {\bf Εύρος τιμών} & {\bf Περιγραφή} & {\bf Πρωτεύον κλειδί} & {\bf Null} & {\bf Ξένο κλειδί} \\ \hline
+    book-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:Μ σχέσης με τον πίνακα books & OXI & ΟΧΙ & NAI \\ \hline
+    user-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:Μ σχέσης με τον πίνακα users & OXI & ΟΧΙ & NAI \\ \hline
+  \end{tabular}
+\caption{Ο πίνακας has-users.}
+\label{table:db_table:has-users}
+\end{center}
+\end{table}
+\end{landscape}
+
+\begin{landscape}
+\begin{table}[htbp]
+\begin{center}
+  \begin{tabular}{|c|c|m{0.35\textwidth}|m{0.35\textwidth}|m{2.0cm}|c|m{1.5cm}|}
+    \hline
+    {\bf Πεδίο} & {\bf Τύπος μεταβλητής} & {\bf Εύρος τιμών} & {\bf Περιγραφή} & {\bf Πρωτεύον κλειδί} & {\bf Null} & {\bf Ξένο κλειδί} \\ \hline
+    id & INT UNSIGNED & 0 έως 4294967295 & Μοναδικός αριθμός που χρησιμεύει ως πρωτεύον κλειδί & ΝΑΙ & ΟΧΙ & ΟΧΙ \\ \hline
+    name & VARCHAR(100) & Όλα τα Αλφαριθμητικά ως 100 χαρακτήρες & Το όνομα του tag & ΟΧΙ & ΟΧΙ & ΟΧΙ \\ \hline
+  \end{tabular}
+\caption{Ο πίνακας tags.}
+\label{table:db_table:tags}
+\end{center}
+\end{table}
+\end{landscape}
+
+\begin{landscape}
+\begin{table}[htbp]
+\begin{center}
+  \begin{tabular}{|c|c|m{0.35\textwidth}|m{0.35\textwidth}|m{2.0cm}|c|m{1.5cm}|}
+    \hline
+    {\bf Πεδίο} & {\bf Τύπος μεταβλητής} & {\bf Εύρος τιμών} & {\bf Περιγραφή} & {\bf Πρωτεύον κλειδί} & {\bf Null} & {\bf Ξένο κλειδί} \\ \hline
+    tag-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:Μ σχέσης με τον πίνακα tags & OXI & ΟΧΙ & NAI \\ \hline
+    book-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:Μ σχέσης με τον πίνακα books & OXI & ΟΧΙ & NAI \\ \hline
+    user-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:Μ σχέσης με τον πίνακα users & OXI & ΟΧΙ & NAI \\ \hline
+  \end{tabular}
+\caption{Ο πίνακας has-tags.}
+\label{table:db_table:has-tags}
+\end{center}
+\end{table}
+\end{landscape}
 
 \subsection{Υλοποίηση}
 
@@ -299,6 +512,50 @@ MariaDB [(none)]> show databases;
 MariaDB [(none)]> use book;
 Database changed
 MariaDB [book]> 
+
+\end{minted}
+
+\begin{minted}[breaklines=true]{mysql}
+MariaDB [book]> CREATE TABLE books (
+    -> id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    -> title VARCHAR(100) NOT NULL,
+    -> description TEXT NOT NULL,
+    -> PRIMARY KEY (id) );
+Query OK, 0 rows affected (0.15 sec)
+
+MariaDB [book]> describe BOOKS;
++-------------+------------------+------+-----+---------+----------------+
+| Field       | Type             | Null | Key | Default | Extra          |
++-------------+------------------+------+-----+---------+----------------+
+| id          | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
+| title       | varchar(100)     | NO   |     | NULL    |                |
+| description | text             | NO   |     | NULL    |                |
++-------------+------------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+
+\end{minted}
+
+\begin{minted}[breaklines=true]{mysql}
+MariaDB [book]> CREATE TABLE identifiers (
+    -> book_id INT UNSIGNED NOT NULL, 
+    -> type VARCHAR(50) NOT NULL, 
+    -> value VARCHAR(50) NOT NULL, 
+    -> language CHAR(2) NOT NULL, 
+    -> FOREIGN KEY (book_id) REFERENCES BOOKS(id) );
+Query OK, 0 rows affected (0.07 sec)
+
+
+MariaDB [book]> describe identifiers;
++----------+------------------+------+-----+---------+-------+
+| Field    | Type             | Null | Key | Default | Extra |
++----------+------------------+------+-----+---------+-------+
+| book_id  | int(10) unsigned | NO   | MUL | NULL    |       |
+| type     | varchar(50)      | NO   |     | NULL    |       |
+| value    | varchar(50)      | NO   |     | NULL    |       |
+| language | char(2)          | NO   |     | NULL    |       |
++----------+------------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
 
 \end{minted}
 
