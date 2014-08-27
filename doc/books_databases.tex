@@ -94,15 +94,13 @@
 Σκοπός της συγκεκριμένης βάσης δεδομένων είναι η ταξινόμηση των βιβλίων (είτε αυτά είναι σε φυσική ή ηλεκτρονική μορφή) που έχουν μία ομάδα χρηστών, έτσι ώστε να είναι δυνατή η γρήγορη εύρεση ενός βιβλίου με βάση κάποια κριτήρια. 
 
 Τα ερωτήματα σε αρχικό στάδιο που θα απαντά η βάση είναι τα παρακάτω:
-
 \begin{itemize}
   \item Τι βιβλία υπάρχουν στην κατοχή των χρηστών
   \item Τι βιβλία έχει ο κάθε χρήστης και ποια είναι η μορφή τους
   \item Τι βιβλία ένας συγγραφέας (ή ένας εκδότης) έχει γράψει (ή έχει εκδώσει)
 \end{itemize}
 
-\emph{Χρειάζεται να αναφέρω τίποτα άλλο στην ανάλυση απαιτήσεων;}
-
+%\emph{Χρειάζεται να αναφέρω τίποτα άλλο στην ανάλυση απαιτήσεων;}
 %\subsection{Πληροφορίες που απαιτούνται}
 
 
@@ -204,16 +202,16 @@
 \end{table}
 
 
-\begin{landscape}
+%\begin{landscape}
 \begin{figure}
 \begin{center}
-\resizebox*{18.5cm}{!}{
+\resizebox*{!}{\textwidth}{
 \includegraphics{images/ERDiagram.jpeg}}
 \caption{Διάγραμμα οντοτήτων - συσχετίσεων}
 \label{fig:ER:diagram}
 \end{center}
 \end{figure}
-\end{landscape}
+%\end{landscape}
 
 
 Εδώ θα μπει το σχεσιακό μοντέλο της βάσεις που προκύπτει από το μοντέλο οντοτήτων - συσχετίσεων.
@@ -239,7 +237,7 @@
 \begin{landscape}
 \begin{figure}
 \begin{center}
-\resizebox*{25.5cm}{!}{
+\resizebox*{23.5cm}{!}{
 \includegraphics{images/RelationalModel.jpeg}}
 \caption{Σχεσιακό σχήμα}
 \label{fig:RelationalModel:diagram}
@@ -248,10 +246,10 @@
 \end{landscape}
 
 
-
+\begin{landscape}
 \subsubsection{Ανάλυση πινάκων}
 
-\begin{landscape}
+
 \begin{table}[htbp]
 \begin{center}
   \begin{tabular}{|c|c|m{0.35\textwidth}|m{0.35\textwidth}|m{2.0cm}|c|m{1.5cm}|}
@@ -260,20 +258,57 @@
     id & INT UNSIGNED & 0 έως 4294967295 & Μοναδικός αριθμός που χρησιμεύει ως πρωτεύον κλειδί & ΝΑΙ & ΟΧΙ & ΟΧΙ \\ \hline
     title & VARCHAR(100) & Όλα τα Αλφαριθμητικά ως 100 χαρακτήρες & Ο τίτλος του βιβλίου & ΟΧΙ & ΟΧΙ & ΟΧΙ \\ \hline
     descritpion & TEXT & Όλα τα Αλφαριθμητικά & Μία περιγραφή του βιβλίου & ΟΧΙ & ΟΧΙ & ΟΧΙ \\ \hline
+    category & VARCHAR(30) & Όλα τα Αλφαριθμητικά ως 30 χαρακτήρες & Η κατηγορία του βιβλίου & ΟΧΙ & ΟΧΙ & ΟΧΙ \\ \hline
   \end{tabular}
 \caption{Ο πίνακας books.}
 \label{table:db_table:books}
 \end{center}
 \end{table}
-%\end{landscape}
+\end{landscape}
 
-%\begin{landscape}
+\begin{landscape}
 \begin{table}[htbp]
 \begin{center}
   \begin{tabular}{|c|c|m{0.35\textwidth}|m{0.35\textwidth}|m{2.0cm}|c|m{1.5cm}|}
     \hline
     {\bf Πεδίο} & {\bf Τύπος μεταβλητής} & {\bf Εύρος τιμών} & {\bf Περιγραφή} & {\bf Πρωτεύον κλειδί} & {\bf Null} & {\bf Ξένο κλειδί} \\ \hline
-    book-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:1 σχέσης με τον πίνακα books & OXI & ΟΧΙ & NAI \\ \hline
+    id & INT UNSIGNED & 0 έως 4294967295 & Μοναδικός αριθμός που χρησιμεύει ως πρωτεύον κλειδί & ΝΑΙ & ΟΧΙ & ΟΧΙ \\ \hline
+    book-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:N σχέσης με τον πίνακα books & ΟΧΙ & ΟΧΙ & NAI \\ \hline
+    publisher-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:N σχέσης με τον πίνακα  & ΟΧΙ & ΟΧΙ & NAI \\ \hline
+    category & VARCHAR(30) & Όλα τα Αλφαριθμητικά ως 30 χαρακτήρες & Η κατηγορία του βιβλίου & ΟΧΙ & ΟΧΙ & ΟΧΙ \\ \hline
+  \end{tabular}
+\caption{Ο πίνακας editions.}
+\label{table:db_table:editions}
+\end{center}
+\end{table}
+\end{landscape}
+
+\begin{landscape}
+\begin{table}[htbp]
+\begin{center}
+  \begin{tabular}{|c|c|m{0.35\textwidth}|m{0.35\textwidth}|m{2.0cm}|c|m{1.5cm}|}
+    \hline
+    {\bf Πεδίο} & {\bf Τύπος μεταβλητής} & {\bf Εύρος τιμών} & {\bf Περιγραφή} & {\bf Πρωτεύον κλειδί} & {\bf Null} & {\bf Ξένο κλειδί} \\ \hline
+    edition-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:Μ σχέσης με τον πίνακα books & ΝΑΙ & ΟΧΙ & NAI \\ \hline
+    type & VARCHAR(15) & Όλα τα Αλφαριθμητικά ως 15 χαρακτήρες & Περιγράφει το είδος του αναγνωριστικού του βιβλίου (ISBN, amazon id, κ.λ.π.)  & ΝΑΙ & ΟΧΙ & ΟΧΙ \\ \hline
+    value & VARCHAR(30) & Όλα τα Αλφαριθμητικά ως 30 χαρακτήρες & Η τιμή του αναγνωριστικού  & OXI & ΟΧΙ & ΟΧΙ \\ \hline
+    language & VARCHAR(2) & Όλα τα Αλφαριθμητικά ως 2 χαρακτήρες & Συντομογραφία της γλώσσας στην οποία είναι γραμμένο το βιβλίο  & OXI & ΟΧΙ & ΟΧΙ \\ \hline
+  \end{tabular}
+\caption{Ο πίνακας identifiers.}
+\label{table::db_table:identifiers}
+\end{center}
+\end{table}
+\end{landscape}
+
+
+\begin{landscape}
+\begin{table}[htbp]
+\begin{center}
+  \begin{tabular}{|c|c|m{0.35\textwidth}|m{0.35\textwidth}|m{2.0cm}|c|m{1.5cm}|}
+    \hline
+    {\bf Πεδίο} & {\bf Τύπος μεταβλητής} & {\bf Εύρος τιμών} & {\bf Περιγραφή} & {\bf Πρωτεύον κλειδί} & {\bf Null} & {\bf Ξένο κλειδί} \\ \hline
+    edition-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:1 σχέσης με τον πίνακα books & ΝΑΙ & ΟΧΙ & NAI \\ \hline
+    value & VARCHAR(30) & Όλα τα Αλφαριθμητικά ως 30 χαρακτήρες & Η τιμή του αναγνωριστικού  & OXI & ΟΧΙ & ΟΧΙ \\ \hline
   \end{tabular}
 \caption{Ο πίνακας paper.}
 \label{table:db_table:paper}
@@ -287,8 +322,8 @@
   \begin{tabular}{|c|c|m{0.35\textwidth}|m{0.35\textwidth}|m{2.0cm}|c|m{1.5cm}|}
     \hline
     {\bf Πεδίο} & {\bf Τύπος μεταβλητής} & {\bf Εύρος τιμών} & {\bf Περιγραφή} & {\bf Πρωτεύον κλειδί} & {\bf Null} & {\bf Ξένο κλειδί} \\ \hline
-    id & INT UNSIGNED & 0 έως 4294967295 & Μοναδικός αριθμός που χρησιμεύει ως πρωτεύον κλειδί & ΝΑΙ & ΟΧΙ & ΟΧΙ \\ \hline
-    book-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:Ν σχέσης με τον πίνακα books & OXI & ΟΧΙ & NAI \\ \hline
+    form-id & INT UNSIGNED & 0 έως 4294967295 & Μοναδικός αριθμός που χρησιμεύει ως πρωτεύον κλειδί & ΝΑΙ & ΟΧΙ & ΟΧΙ \\ \hline
+    edition-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:Ν σχέσης με τον πίνακα books & OXI & ΟΧΙ & NAI \\ \hline
     location & VARCHAR(100) &  Όλα τα Αλφαριθμητικά ως 100 χαρακτήρες & Πεδίο που περιγράφει την φυσική τοποθεσία του βιβλίου & OXI & ΟΧΙ & ΟΧΙ \\ \hline
   \end{tabular}
 \caption{Ο πίνακας paperbook.}
@@ -303,9 +338,9 @@
   \begin{tabular}{|c|c|m{0.35\textwidth}|m{0.35\textwidth}|m{2.0cm}|c|m{1.5cm}|}
     \hline
     {\bf Πεδίο} & {\bf Τύπος μεταβλητής} & {\bf Εύρος τιμών} & {\bf Περιγραφή} & {\bf Πρωτεύον κλειδί} & {\bf Null} & {\bf Ξένο κλειδί} \\ \hline
-    book-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:1 σχέσης με τον πίνακα books & OXI & ΟΧΙ & NAI \\ \hline
+    edition-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:1 σχέσης με τον πίνακα books & ΝΑΙ & ΟΧΙ & NAI \\ \hline
     path & VARCHAR(100) &  Όλα τα Αλφαριθμητικά ως 100 χαρακτήρες & Το path στο οποίο είναι αποθηκευμένα τα αρχεία των ηλεκτρονικών βιβλίων & OXI & ΟΧΙ & ΟΧΙ \\ \hline
-    cover & VARCHAR(100) &  Όλα τα Αλφαριθμητικά ως 100 χαρακτήρες & Το path στο οποίο είναι αποθηκευμένο το εξώφυλλο των ηλεκτρονικών βιβλίων & OXI & ΟΧΙ & ΟΧΙ \\ \hline
+    cover & VARCHAR(30) &  Όλα τα Αλφαριθμητικά ως 30 χαρακτήρες & Το path στο οποίο είναι αποθηκευμένο το εξώφυλλο των ηλεκτρονικών βιβλίων & OXI & ΟΧΙ & ΟΧΙ \\ \hline
   \end{tabular}
 \caption{Ο πίνακας ebook.}
 \label{table:db_table:ebook}
@@ -319,8 +354,8 @@
   \begin{tabular}{|c|c|m{0.35\textwidth}|m{0.35\textwidth}|m{2.0cm}|c|m{1.5cm}|}
     \hline
     {\bf Πεδίο} & {\bf Τύπος μεταβλητής} & {\bf Εύρος τιμών} & {\bf Περιγραφή} & {\bf Πρωτεύον κλειδί} & {\bf Null} & {\bf Ξένο κλειδί} \\ \hline
-    id & INT UNSIGNED & 0 έως 4294967295 & Μοναδικός αριθμός που χρησιμεύει ως πρωτεύον κλειδί & ΝΑΙ & ΟΧΙ & ΟΧΙ \\ \hline
-    book-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:Ν σχέσης με τον πίνακα books & OXI & ΟΧΙ & NAI \\ \hline
+    form-id & INT UNSIGNED & 0 έως 4294967295 & Μοναδικός αριθμός που χρησιμεύει ως πρωτεύον κλειδί & ΝΑΙ & ΟΧΙ & ΟΧΙ \\ \hline
+    edition-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:Ν σχέσης με τον πίνακα books & ΟΧΙ & ΟΧΙ & NAI \\ \hline
     format & VARCHAR(10) &  Όλα τα Αλφαριθμητικά ως 100 χαρακτήρες & Πεδίο που περιγράφει το format του ηλεκτρονικού βιβλίου & OXI & ΟΧΙ & ΟΧΙ \\ \hline
     size & INT UNSIGNED & 0 έως 4294967295 & Πεδίο που περιγράφει το μέγεθος του ηλεκτρονικού βιβλίου σε bytes & OXI & ΟΧΙ & ΟΧΙ \\ \hline
     name & VARCHAR(10) &  Όλα τα Αλφαριθμητικά ως 100 χαρακτήρες & Πεδίο που περιγράφει το όνομα του αρχείου του ηλεκτρονικού βιβλίου & OXI & ΟΧΙ & ΟΧΙ \\ \hline
@@ -331,22 +366,7 @@
 \end{table}
 \end{landscape}
 
-\begin{landscape}
-\begin{table}[htbp]
-\begin{center}
-  \begin{tabular}{|c|c|m{0.35\textwidth}|m{0.35\textwidth}|m{2.0cm}|c|m{1.5cm}|}
-    \hline
-    {\bf Πεδίο} & {\bf Τύπος μεταβλητής} & {\bf Εύρος τιμών} & {\bf Περιγραφή} & {\bf Πρωτεύον κλειδί} & {\bf Null} & {\bf Ξένο κλειδί} \\ \hline
-    book-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:Μ σχέσης με τον πίνακα books & OXI & ΟΧΙ & NAI \\ \hline
-    type & VARCHAR(10) & Όλα τα Αλφαριθμητικά ως 10 χαρακτήρες & Περιγράφει το είδος του αναγνωριστικού του βιβλίου (ISBN, amazon id, κ.λ.π.)  & OXI & ΟΧΙ & ΟΧΙ \\ \hline
-    type & VARCHAR(20) & Όλα τα Αλφαριθμητικά ως 20 χαρακτήρες & Η τιμή του αναγνωριστικού  & OXI & ΟΧΙ & ΟΧΙ \\ \hline
-    language & VARCHAR(2) & Όλα τα Αλφαριθμητικά ως 2 χαρακτήρες & Συντομογραφία της γλώσσας στην οποία είναι γραμμένο το βιβλίο  & OXI & ΟΧΙ & ΟΧΙ \\ \hline
-  \end{tabular}
-\caption{Ο πίνακας identifiers.}
-\label{table::db_table:identifiers}
-\end{center}
-\end{table}
-\end{landscape}
+
 
 \begin{landscape}
 \begin{table}[htbp]
@@ -361,22 +381,6 @@
 \label{table:db_table:publishers}
 \end{center}
 \end{table}
-%\end{landscape}
-
-%\begin{landscape}
-\begin{table}[htbp]
-\begin{center}
-  \begin{tabular}{|c|c|m{0.35\textwidth}|m{0.35\textwidth}|m{2.0cm}|c|m{1.5cm}|}
-    \hline
-    {\bf Πεδίο} & {\bf Τύπος μεταβλητής} & {\bf Εύρος τιμών} & {\bf Περιγραφή} & {\bf Πρωτεύον κλειδί} & {\bf Null} & {\bf Ξένο κλειδί} \\ \hline
-    publisher-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:Μ σχέσης με τον πίνακα publishers & OXI & ΟΧΙ & NAI \\ \hline
-    book-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:Μ σχέσης με τον πίνακα books & OXI & ΟΧΙ & NAI \\ \hline
-    date & DATE & 1000-01-01 έως 9999-12-31 & Ημερομηνία έκδοσης του βιβλίου & OXI & ΟΧΙ & ΟΧΙ \\ \hline
-  \end{tabular}
-\caption{Ο πίνακας publish.}
-\label{table:db_table:publish}
-\end{center}
-\end{table}
 \end{landscape}
 
 \begin{landscape}
@@ -386,7 +390,7 @@
     \hline
     {\bf Πεδίο} & {\bf Τύπος μεταβλητής} & {\bf Εύρος τιμών} & {\bf Περιγραφή} & {\bf Πρωτεύον κλειδί} & {\bf Null} & {\bf Ξένο κλειδί} \\ \hline
     id & INT UNSIGNED & 0 έως 4294967295 & Μοναδικός αριθμός που χρησιμεύει ως πρωτεύον κλειδί & ΝΑΙ & ΟΧΙ & ΟΧΙ \\ \hline
-    name & VARCHAR(100) & Όλα τα Αλφαριθμητικά ως 100 χαρακτήρες & Το όνομα του συγγραφέα & ΟΧΙ & ΟΧΙ & ΟΧΙ \\ \hline
+    name & VARCHAR(50) & Όλα τα Αλφαριθμητικά ως 50 χαρακτήρες & Το όνομα του συγγραφέα & ΟΧΙ & ΟΧΙ & ΟΧΙ \\ \hline
   \end{tabular}
 \caption{Ο πίνακας authors.}
 \label{table:db_table:authors}
@@ -400,8 +404,8 @@
   \begin{tabular}{|c|c|m{0.35\textwidth}|m{0.35\textwidth}|m{2.0cm}|c|m{1.5cm}|}
     \hline
     {\bf Πεδίο} & {\bf Τύπος μεταβλητής} & {\bf Εύρος τιμών} & {\bf Περιγραφή} & {\bf Πρωτεύον κλειδί} & {\bf Null} & {\bf Ξένο κλειδί} \\ \hline
-    author-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:Μ σχέσης με τον πίνακα authors & OXI & ΟΧΙ & NAI \\ \hline
-    book-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:Μ σχέσης με τον πίνακα books & OXI & ΟΧΙ & NAI \\ \hline
+    author-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:Μ σχέσης με τον πίνακα authors & ΝΑΙ & ΟΧΙ & NAI \\ \hline
+    book-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:Μ σχέσης με τον πίνακα books & ΝΑΙ & ΟΧΙ & NAI \\ \hline
   \end{tabular}
 \caption{Ο πίνακας writes.}
 \label{table:db_table:writes}
@@ -430,8 +434,8 @@
   \begin{tabular}{|c|c|m{0.35\textwidth}|m{0.35\textwidth}|m{2.0cm}|c|m{1.5cm}|}
     \hline
     {\bf Πεδίο} & {\bf Τύπος μεταβλητής} & {\bf Εύρος τιμών} & {\bf Περιγραφή} & {\bf Πρωτεύον κλειδί} & {\bf Null} & {\bf Ξένο κλειδί} \\ \hline
-    book-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:Μ σχέσης με τον πίνακα books & OXI & ΟΧΙ & NAI \\ \hline
-    user-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:Μ σχέσης με τον πίνακα users & OXI & ΟΧΙ & NAI \\ \hline
+    book-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:Μ σχέσης με τον πίνακα books & ΝΑΙ & ΟΧΙ & NAI \\ \hline
+    user-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:Μ σχέσης με τον πίνακα users & ΝΑΙ & ΟΧΙ & NAI \\ \hline
   \end{tabular}
 \caption{Ο πίνακας has-users.}
 \label{table:db_table:has-users}
@@ -446,7 +450,7 @@
     \hline
     {\bf Πεδίο} & {\bf Τύπος μεταβλητής} & {\bf Εύρος τιμών} & {\bf Περιγραφή} & {\bf Πρωτεύον κλειδί} & {\bf Null} & {\bf Ξένο κλειδί} \\ \hline
     id & INT UNSIGNED & 0 έως 4294967295 & Μοναδικός αριθμός που χρησιμεύει ως πρωτεύον κλειδί & ΝΑΙ & ΟΧΙ & ΟΧΙ \\ \hline
-    name & VARCHAR(100) & Όλα τα Αλφαριθμητικά ως 100 χαρακτήρες & Το όνομα του tag & ΟΧΙ & ΟΧΙ & ΟΧΙ \\ \hline
+    name & VARCHAR(50) & Όλα τα Αλφαριθμητικά ως 50 χαρακτήρες & Το όνομα του tag & ΟΧΙ & ΟΧΙ & ΟΧΙ \\ \hline
   \end{tabular}
 \caption{Ο πίνακας tags.}
 \label{table:db_table:tags}
@@ -460,9 +464,9 @@
   \begin{tabular}{|c|c|m{0.35\textwidth}|m{0.35\textwidth}|m{2.0cm}|c|m{1.5cm}|}
     \hline
     {\bf Πεδίο} & {\bf Τύπος μεταβλητής} & {\bf Εύρος τιμών} & {\bf Περιγραφή} & {\bf Πρωτεύον κλειδί} & {\bf Null} & {\bf Ξένο κλειδί} \\ \hline
-    tag-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:Μ σχέσης με τον πίνακα tags & OXI & ΟΧΙ & NAI \\ \hline
-    book-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:Μ σχέσης με τον πίνακα books & OXI & ΟΧΙ & NAI \\ \hline
-    user-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:Μ σχέσης με τον πίνακα users & OXI & ΟΧΙ & NAI \\ \hline
+    tag-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:Μ σχέσης με τον πίνακα tags & ΝΑΙ & ΟΧΙ & NAI \\ \hline
+    book-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:Μ σχέσης με τον πίνακα books & ΝΑΙ & ΟΧΙ & NAI \\ \hline
+    user-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:Μ σχέσης με τον πίνακα users & ΝΑΙ & ΟΧΙ & NAI \\ \hline
   \end{tabular}
 \caption{Ο πίνακας has-tags.}
 \label{table:db_table:has-tags}
