@@ -205,6 +205,8 @@
 \end{figure}
 %\end{landscape}
 
+\subsubsection{Σχολιασμός οντοτήτων και σχέσεων της βάσης δεδομένων}
+Να σχολιάσω ότι δεν είναι εμφανές από το ER-diagram.
 
 \subsection{Λογικός σχεδιασμός}
 
@@ -515,10 +517,38 @@
 \end{table}
 
 Ο πίνακας has-tags (βλ. πίνακα \ref{table:db_table:has-tags}) υλοποιεί την τριμελή σχέση μεταξύ των βιβλίων, των χρηστών και tags. Το πρωτεύον κλειδί του πίνακα είναι σύνθετο και αποτελείται από το tag-id, το book-id και το user-id που είναι ταυτόχρονα ξένα κλειδιά για τους πίνακες  tags, books και users αντίστοιχα. Ο πίνακας αυτός αποτυπώνει τα tags που βάζουν οι χρήστες στα βιβλία.
-\end{landscape}
+\end{landscape} 
 
 \subsubsection{Boyce-Codd Κανονική Μορφή}
 
+Η κανονικοποίηση του σχήματος της βάσης δεδομένων αποτελεί βασικό βήμα κατά το σχεδιασμό μίας βάσης. Κύριος στόχος της κανονικοποίησης είναι η κατάργηση του πλεονασμού των δεδομένων, ο οποίος δημιουργεί προβλήματα κατά τις εισαγωγές, διαγραφές και ενημερώσεις δεδομένων. Επιπλέον, απαιτείται περισσότερος χώρος για την αποθήκευση των δεδομένων \cite{baseis_manolopoulos, wiki:normalization}. 
+
+Η κανονικοποίηση στηρίζεται στη θεωρία συναρτησιακών εξαρτήσεων. Μία συναρτησιακή εξάρτηση συμβολίζεται με $X \rightarrow Y$ και δηλώνει ότι το σύνολο χαρακτηριστικών $Y$ είναι συναρτησιακά εξαρτώμενο από το σύνολο χαρακτηριστικών του $X$. Αυτό σημαίνει ότι αν δύο γραμμές του πίνακα έχουν ίδιες τιμές για τα χαρακτηριστικά του $X$, τε πρέπει να έχουν ίδιες τιμές για τα χαρακτηριστικά του $Y$ \cite{baseis_manolopoulos}.
+
+Οι κανονικές μορφές προκύπτουν με διαδοχικές διασπάσεις των πινάκων της βάσης σε απλούστερους. Η απλούστερη κανονική μορφή είναι η πρώτη κανονική μορφή (1NF), ενώ η πέμπτη κανονική μορφή (5NF) είναι η πλέον περιοριστική. Στην πράξη, οι πίνακες κανονικοποιούνται συνήθως μέχρι την κανονική μορφή Boyce-Codd (BCNF) \cite{baseis_manolopoulos}.
+
+Για να προσδιορίσουμε αν ένας πίνακας βρίσκεται στην κανονική μορφή Boyce-Codd αρκεί να εξετάσουμε όλες τις συναρτησιακές εξαρτήσεις $X \rightarrow Y$ ελέγχοντας αν το $X$ αποτελεί κάποιο κλειδί (πρωτεύον ή εναλλακτικό) του πίνακα. Σε διαφορετική περίπτωση θα πρέπει να προχωρήσουμε σε διάσπαση του πίνακα έτσι ώστε να ικανοποιηθεί η συνθήκη της κανονική μορφής Boyce-Codd \cite{baseis_manolopoulos, wiki:boyce-codd}.
+
+Στο σχήμα μας η συναρτησιακές εξαρτήσεις είναι οι παρακάτω:
+\begin{itemize}
+\item $R_1$(\underline{id(books)}, title, description, category)
+\item $R_2$(\underline{id(editions)}, book-id, publisher-id, edition, date)
+\item $R_3$(\underline{edition-id}, \underline{type}, value, language)
+\item $R_4$(\underline{id(publisher)}, name)
+\item $R_5$(\underline{id(author)}, name)
+\item $R_6$(\underline{author-id}, \underline{book-id})
+\item $R_7$(\underline{edition-id(paper)}, banding)
+\item $R_8$(\underline{edition-id(ebook)}, path, cover)
+\item $R_9$(\underline{id(forms)})
+\item $R_10$(\underline{form-id(paperbooks)}, edition-id, location)
+\item $R_11$(\underline{form-id(data)}, edition-id, format, size, name)
+\item $R_12$(\underline{id(users)}, name)
+\item $R_13$(\underline{form-id}, \underline{user-id})
+\item $R_14$(\underline{id(tags)}, name)
+\item $R_15$(\underline{tag-id}, \underline{book-id}, \underline{user-id})
+\end{itemize}
+
+Όπως παρατηρούμε σε όλες τις συναρτησιακές εξαρτήσεις τα κλειδιά είναι σωστά ορισμένα οπότε δεν χρειάζεται περαιτέρω διάσπαση των πινάκων της βάσης. Επομένως αφού είναι BCNF τότε είναι και 3NF κανονική μορφή.
 
 \section{Υλοποίηση της Βάσης Δεδομένων}
 
