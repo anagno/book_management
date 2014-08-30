@@ -19,8 +19,8 @@
 \newcommand{\en}[1]{\setlanguage{american}#1\setlanguage{monogreek}} 
 
 \setmainfont[]{Ubuntu} % Για τις γραμματοσειρές 
-\setsansfont[]{Ubuntu} 
-\setmonofont[]{Ubuntu} 
+%\setsansfont[]{Ubuntu} 
+%\setmonofont[]{Ubuntu} 
 
 
 %Να δω για να αλλάξω διάφορα
