@@ -32,6 +32,8 @@
 
 \pagestyle{plain}
 \tableofcontents
+\listoftables
+\listoffigures
 \newpage
 
 
@@ -87,7 +89,7 @@
 
 \section{Ανάλυση απαιτήσεων}
 
-Η ανάλυση απαιτήσεων περιλαμβάνει τις εργασίες για τον καθορισμό των αναγκών ή των προϋποθέσεων που χρειάζονται για την ολοκλήρωση ενός προϊόντος (στην συγκεκριμένη περίπτωση της βάσης δεδομένων μας). Στην ανάλυση απαιτήσεων λαμβάνονται υπόψιν οι ενδεχόμενες αντικρουόμενες απαιτήσεις των διαφόρων μερών ενώ ταυτόχρονα αναλύονται και τεκμηριώνονται οι τυχόν απαιτήσεις του προϊόντος \cite{wiki:requirement_analysis}. Για να είναι επιτυχές ένα σύστημα βάσεως δεδομένων θα πρέπει να είναι προσαρμοσμένο στις ανάγκες, απαιτήσεις, αλλά και προσδοκίες του τελικού χρήστη. Αυτό σημαίνει ότι το ζητούμενο είναι, τί πραγματικά επιθυμεί ο χρήστης, τί ακριβώς περιμένει από το σύστημα και πόσο φιλικό είναι αυτό σε αυτόν και κατά πόσο ικανοποιεί τους σκοπούς για τους οποίους υλοποιήθηκε.
+Η ανάλυση απαιτήσεων περιλαμβάνει τις εργασίες για τον καθορισμό των αναγκών ή των προϋποθέσεων που χρειάζονται για την ολοκλήρωση ενός προϊόντος (στην συγκεκριμένη περίπτωση της βάσης δεδομένων). Στην ανάλυση απαιτήσεων λαμβάνονται υπόψιν οι ενδεχόμενες αντικρουόμενες απαιτήσεις των διαφόρων μερών ενώ ταυτόχρονα αναλύονται και τεκμηριώνονται οι τυχόν απαιτήσεις του προϊόντος \cite{wiki:requirement_analysis}. Για να είναι επιτυχές ένα σύστημα βάσεως δεδομένων θα πρέπει να είναι προσαρμοσμένο στις ανάγκες, απαιτήσεις, αλλά και προσδοκίες του τελικού χρήστη. Αυτό σημαίνει ότι το ζητούμενο είναι, τί πραγματικά επιθυμεί ο χρήστης, τί ακριβώς περιμένει από το σύστημα και πόσο φιλικό είναι αυτό σε αυτόν και κατά πόσο ικανοποιεί τους σκοπούς για τους οποίους υλοποιήθηκε.
 
 \subsection{Σκοπός δημιουργίας της βάσης δεδομένων}
 
@@ -115,23 +117,23 @@
 
 Υπάρχουν δύο βασικές εννοιολογικές έννοιες \cite{class_notes}:
 \begin{description}
-  \item[Οντότητες (\en{entities}):] Συγκεκριμένα αντικείμενα που υπάρχουν (ή πιστεύεται ότι υπάρχουν) και μπορούν να αναπαρασταθούν στην βάση δεδομένων. Οι οντότητες μπορούν να έχουν χαρακτηριστικά (\en{attributes}) που είναι ιδιότητες που τα χαρακτηρίζουν
+  \item[Οντότητες (\en{entities}):] Συγκεκριμένα αντικείμενα που υπάρχουν (ή πιστεύεται ότι υπάρχουν) και μπορούν να αναπαρασταθούν στην βάση δεδομένων. Οι οντότητες μπορούν να έχουν χαρακτηριστικά (\en{attributes}) που είναι ιδιότητες που τα χαρακτηρίζουν.
   \item[Συσχετίσεις (\en{relationships}):] Είναι επίσης (ειδικά) αντικείμενα που αντιστοιχούν δύο ή περισσότερες ξεχωριστές οντότητες με ένα συγκεκριμένο νόημα (τυπικά, μια Συσχέτιση είναι ένα διατεταγμένο σύνολο οντοτήτων). Ομοίως και οι συσχετίσεις μπορούν να έχουν χαρακτηριστικά.
 \end{description}
 
 Σκοπός της συγκεκριμένης βάσης δεδομένων είναι η καταγραφή και ταξινόμηση όλων των βιβλίων των χρηστών. Επομένως οι δύο οντότητες οι οποίες θα πρέπει να υπάρχουν στην βάση δεδομένων είναι τα βιβλία καθώς και οι χρήστες οι οποίοι κατέχουν αυτά τα βιβλία (με όποια τυχόν χαρακτηριστικά χρειάζονται να καταγράφονται ακόμα για αυτές τις δύο οντότητες).
 
-Συγκεκριμένα για τους χρήστες θα καταγράφουμε μόνο το όνομα τους, ενώ για τα βιβλία θα καταγράφεται ο τίτλος τους, μία περιγραφή για το βιβλίο και η κατηγορία στην οποία ανήκει το βιβλίο αυτό. Ακόμα θα καταγράφονται οι τυχόν εκδόσεις αυτού του βιβλίου καθώς και αν είναι ηλεκτρονικό ή έντυπο βιβλίο. Επομένως θα υπάρχει εξειδίκευση μεταξύ των έντυπων και ηλεκτρονικών βιβλίων. Αν είναι έντυπη μορφή θα καταγράφεται ακόμα και το είδος του εξωφύλλου που έχει ενώ αν είναι σε ηλεκτρονική μορφή θα καταγράφεται το εξώφυλλο του βιβλίου καθώς και το μονοπάτι στο οποίο θα είναι αποθηκευμένο.
+Συγκεκριμένα για τους χρήστες θα καταγράφουμε μόνο το όνομα τους, ενώ για τα βιβλία θα καταγράφεται ο τίτλος τους, μία περιγραφή για το βιβλίο και οι κατηγορίες στις οποίες ανήκει το βιβλίο αυτό. Ακόμα θα καταγράφονται οι τυχόν εκδόσεις αυτού του βιβλίου καθώς και αν είναι ηλεκτρονικό ή έντυπο βιβλίο. Επομένως θα υπάρχει εξειδίκευση μεταξύ των έντυπων και ηλεκτρονικών βιβλίων. Αν είναι έντυπη μορφή θα καταγράφεται ακόμα και το είδος του εξωφύλλου που έχει ενώ αν είναι σε ηλεκτρονική μορφή θα καταγράφεται το εξώφυλλο του βιβλίου καθώς και το μονοπάτι στο οποίο θα είναι αποθηκευμένο.
 
 Ακόμα θα αποθηκεύονται και οι συγγραφείς του κάθε βιβλίο καθώς και ο εκδότης της κάθε έκδοσης. Επομένως αυτά θα γίνουν ομοίως οντότητες στο διάγραμμα μας οι οποίες θα συνδέονται με τα βιβλία και τις εκδόσεις αντίστοιχα. Ακόμα θα καταγράφονται τα αναγνωριστικά των βιβλίων (π.χ. isbn, google books number, κ.λ.π.) τα οποία είναι πλειότιμα και σύνθετα χαρακτηριστικά καθώς και η ημερομηνία έκδοσης του βιβλίου.
 
-Όλα τα παραπάνω αφορούν τις γενικές πληροφορίες των βιβλίων και των εκδόσεων τους και είναι ανεξάρτητες από τους χρήστες. Επομένως σε επόμενο βήμα θα πρέπει να δημιουργηθεί μία σχέση που θα ταυτίζει το βιβλίο με τον χρήστη. Από την στιγμή που μπορούν να υπάρχουν πολλά αντίτυπα του ίδιου βιβλίου θα πρέπει να δημιουργηθεί μία οντότητα η οποία θα καταγράφει όλες τις μορφές αυτές (είτε είναι σε έντυπη μορφή, είτε είναι τα ηλεκτρονικά αρχεία των \en{e-books} καθώς και να τις συσχετίζει με τους χρήστες.
+Όλα τα παραπάνω αφορούν τις γενικές πληροφορίες των βιβλίων και των εκδόσεων τους και είναι ανεξάρτητες από τους χρήστες. Επομένως σε επόμενο βήμα θα πρέπει να δημιουργηθεί μία σχέση που θα ταυτίζει το βιβλίο με τον χρήστη. Από την στιγμή που μπορούν να υπάρχουν πολλά αντίτυπα του ίδιου βιβλίου θα πρέπει να δημιουργηθεί μία οντότητα η οποία θα καταγράφει όλες τις μορφές αυτές (είτε είναι σε έντυπη μορφή, είτε είναι τα ηλεκτρονικά αρχεία των \en{e-books} καθώς και να τις συσχετίζει με τους χρήστες).
 
 Επομένως θα δημιουργηθεί μία γενική οντότητα FORM η οποία θα εξειδικεύεται για τα έντυπα και τα ηλεκτρονικά βιβλία και αντίστοιχα θα αποθηκεύει την φυσική τους τοποθεσία καθώς και το είδος του αρχείου που υπάρχει.
 
-Τέλος θα υπάρχουν ακόμα και ετικέτες οι οποίες θα είναι διαφορετικές ανάλογα το βιβλίο και τον χρήστη. Οι ετικέτες θα γίνουν ξεχωριστές οντότητες και θα συνδέονται ταυτόχρονα με τα βιβλία και τους χρήστες.
+Τέλος θα υπάρχουν ακόμα και ετικέτες (αγγλ. \en{tags}) που θα αποδίδουν οι χρήστες στα βιβλία και οι οποίες θα είναι διαφορετικές ανάλογα το βιβλίο και τον χρήστη. Οι ετικέτες θα γίνουν ξεχωριστές οντότητες και θα συνδέονται ταυτόχρονα με τα βιβλία και τους χρήστες.
 
-Όλα τα παραπάνω συνοψίζονται στο σχήμα \ref{fig:ER:diagram} ενώ  πίνακα \ref{table:icons} φαίνονται αναλυτικά τα εικονίδια των διαγραμμάτων οντοτήτων - συσχετίσεων καθώς και το τί συμβολίζουν.
+Όλα τα παραπάνω συνοψίζονται στο σχήμα \ref{fig:ER:diagram} ενώ στο πίνακα \ref{table:icons} φαίνονται αναλυτικά τα εικονίδια των διαγραμμάτων οντοτήτων - συσχετίσεων καθώς και το τί συμβολίζουν.
 
 
 %Η πληθικότητα (\en{cardinality}) ενός τύπου συσχέτισης ορίζει το πόσες οντότητες από το πρώτο σύνολο οντοτήτων στην συσχέτιση μπορούν να συνδεθούν με πόσες οντότητες από το δεύτερο σύνολο οντοτήτων \cite{class_notes}.
@@ -206,7 +208,11 @@
 %\end{landscape}
 
 \subsubsection{Σχολιασμός οντοτήτων και σχέσεων της βάσης δεδομένων}
-Να σχολιάσω ότι δεν είναι εμφανές από το ER-diagram.
+\begin{itemize}
+  \item Η οντότητα FORM θα μπορούσε να είχε παραληφθεί και να είχαν δημιουργηθεί απευθείας σχέσεις μεταξύ των χρηστών και των paperbook και datum αντίστοιχα. 
+  \item Για τις οντότητες AUTHOR, PUBLISHER, USER τα χαρακτηριστικά που υπάρχουν είναι λίγα. Για την κάθε οντότητα θα μπορούσαν να καταγραφούν και άλλες λεπτομέρειες (όπως ημερομηνία γέννησης για τους συγγραφείς, κ.λ.π.) αλλά θεωρήθηκε σκόπιμα να μην συμπεριληφθούν αφού αυτές οι λεπτομέρειες δεν επηρεάζουν τον γενικό σχεδιασμό της βάσης και κάνουν πιο εύκολη την υλοποίηση της βάσης σε αυτό το επίπεδο. 
+\end{itemize}
+
 
 \subsection{Λογικός σχεδιασμός}
 
@@ -244,6 +250,7 @@
 
 \begin{landscape}
 \subsubsection{Ανάλυση πινάκων}
+\label{table_analysis}
 
 \begin{table}[htbp]
 \begin{center}
@@ -253,15 +260,30 @@
     id & INT UNSIGNED & 0 έως 4294967295 & Μοναδικός αριθμός που χρησιμεύει ως πρωτεύον κλειδί & ΝΑΙ & ΟΧΙ & ΟΧΙ \\ \hline
     title & VARCHAR(100) & Όλα τα Αλφαριθμητικά ως 100 χαρακτήρες & Ο τίτλος του βιβλίου & ΟΧΙ & ΟΧΙ & ΟΧΙ \\ \hline
     descritpion & TEXT & Όλα τα Αλφαριθμητικά & Μία περιγραφή του βιβλίου & ΟΧΙ & ΟΧΙ & ΟΧΙ \\ \hline
-    category & VARCHAR(30) & Όλα τα Αλφαριθμητικά ως 30 χαρακτήρες & Η κατηγορία του βιβλίου & ΟΧΙ & ΟΧΙ & ΟΧΙ \\ \hline
   \end{tabular}
 \caption{Ο πίνακας books.}
 \label{table:db_table:books}
 \end{center}
 \end{table}
 
-Ο πίνακας books (βλ. πίνακα \ref{table:db_table:books}) όπως ειπώθηκε και στην ενότητα \ref{ERmodel} αποτυπώνει τις γενικές πληροφορίες για τα βιβλία. Περιέχει το μοναδικό εσωτερικό αριθμό που χρησιμοποιείται από την βάση δεδομένων ως πρωτεύον κλειδί ενώ ακόμα περιέχει και τον τίτλο του βιβλίου καθώς και μία περιγραφή για το βιβλίο. Τέλος περιέχει και την κατηγορία του βιβλίου. Για το πρωτεύον αριθμό χρησιμοποιείται ένας ακέραιος αριθμός ενώ για τα υπόλοιπα πεδία χρησιμοποιούνται διάφορου μήκους αλφαριθμητικά.
+Ο πίνακας books (βλ. πίνακα \ref{table:db_table:books}) όπως ειπώθηκε και στην ενότητα \ref{ERmodel} αποτυπώνει τις γενικές πληροφορίες για τα βιβλία. Περιέχει το μοναδικό εσωτερικό αριθμό που χρησιμοποιείται από την βάση δεδομένων ως πρωτεύον κλειδί ενώ ακόμα περιέχει και τον τίτλο του βιβλίου καθώς και μία περιγραφή για το βιβλίο. Για το πρωτεύον αριθμό χρησιμοποιείται ένας ακέραιος αριθμός ενώ για τα υπόλοιπα πεδία χρησιμοποιούνται διάφορου μήκους αλφαριθμητικά. 
+\end{landscape}
 
+\begin{landscape}
+\begin{table}[htbp]
+\begin{center}
+  \begin{tabular}{|c|c|m{0.35\textwidth}|m{0.35\textwidth}|m{2.0cm}|c|m{1.5cm}|}
+    \hline
+    {\bf Πεδίο} & {\bf Τύπος μεταβλητής} & {\bf Εύρος τιμών} & {\bf Περιγραφή} & {\bf Πρωτεύον κλειδί} & {\bf Null} & {\bf Ξένο κλειδί} \\ \hline
+    book-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:N σχέσης με τον πίνακα books & ΝΑΙ & ΟΧΙ & NAI \\ \hline
+    type & VARCHAR(30) & Όλα τα Αλφαριθμητικά ως 15 χαρακτήρες & Περιγράφει την κατηγορία στην οποία ανήκει το βιβλίο & ΝΑΙ & ΟΧΙ & ΟΧΙ \\ \hline
+  \end{tabular}
+\caption{Ο πίνακας categories.}
+\label{table:db_table:categories}
+\end{center}
+\end{table}
+
+Ο πίνακας categories (βλ. πίνακα \ref{table:db_table:categories}) αποτυπώνει το πλειότιμο χαρακτηριστικό categories. Ένα βιβλίο μπορεί να ανήκει σε πολλές κατηγορίες και γι` αυτό το σκοπό δημιουργείται ένα επιπλέον πίνακας για να αποθηκεύονται σε αυτόν όλες οι δυνατές τιμές. Το πρωτεύον κλειδί του πίνακα είναι σύνθετο και αποτελείται από το book-id (που είναι ταυτόχρονα και ξένο κλειδί που αποτυπώνει την σύνδεση με τον πίνακα books) και από το type (το οποίο αποτυπώνει την κατηγορία του βιβλίου). 
 \end{landscape}
 
 \begin{landscape}
@@ -273,8 +295,8 @@
     id & INT UNSIGNED & 0 έως 4294967295 & Μοναδικός αριθμός που χρησιμεύει ως πρωτεύον κλειδί & ΝΑΙ & ΟΧΙ & ΟΧΙ \\ \hline
     book-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:N σχέσης με τον πίνακα books & ΟΧΙ & ΟΧΙ & NAI \\ \hline
     publisher-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:N σχέσης με τον πίνακα  & ΟΧΙ & ΟΧΙ & NAI \\ \hline
-    id & INT UNSIGNED & 0 έως 4294967295 & Αριθμός που δείχνει την έκδοση του βιβλίου  & ΟΧΙ & ΝΑΙ & ΟΧΙ \\ \hline
-    date & DATE & 1000-01-01 έως 9999-12-31 & Ημερομηνία έκδοσης του βιβλίου & OXI & ΟΧΙ & ΟΧΙ \\ \hline
+    edition & INT UNSIGNED & 0 έως 4294967295 & Αριθμός που δείχνει την έκδοση του βιβλίου  & ΟΧΙ & ΝΑΙ & ΟΧΙ \\ \hline
+    date & DATE & 1000-01-01 έως 9999-12-31 & Ημερομηνία έκδοσης του βιβλίου & OXI & ΝΑΙ & ΟΧΙ \\ \hline
   \end{tabular}
 \caption{Ο πίνακας editions.}
 \label{table:db_table:editions}
@@ -300,7 +322,7 @@
 \end{center}
 \end{table}
 
-Ο πίνακας identifiers (βλ. πίνακα \ref{table:db_table:identifiers}) αποτυπώνει το πλειότιμο χαρακτηριστικό της σχέσης publish. Μία συγκεκριμένη έκδοση ενός βιβλίου μπορεί να περιέχει πολλά αναγνωριστικά όπως isbn 10 ψηφίων, isbn 13 ψηφίων καθώς και άλλα αναγνωριστικά που αποδίδονται από διάφορες εταιρείες όπως η google και η amazon. Γι` αυτό το σκοπό δημιουργήθηκε ο συγκεκριμένος πίνακας για να αποτυπώσει τις συγκεκριμένες πληροφορίες. Το πρωτεύον κλειδί του πίνακα είναι σύνθετο και αποτελείται από το edition-id (που είναι ταυτόχρονα και ξένο κλειδί που αποτυπώνει την σύνδεση με τον πίνακα editions) και από το type (Αυτό συμβαίνει διότι το ίδιο αναγνωριστικό (π.χ. το isbn 13 τιμέςχαρακτήρων) δεν μπορεί να έχει δύο διαφορετικές τιμές για την ίδια έκδοση του βιβλίου). Ακόμα καταγράφεται η τιμή του αναγνωριστικού καθώς και η γλώσσα στην οποία είναι γραμμένη η συγκεκριμένη έκδοση του βιβλίου.
+Ο πίνακας identifiers (βλ. πίνακα \ref{table:db_table:identifiers}) αποτυπώνει το πλειότιμο χαρακτηριστικό της σχέσης publish. Μία συγκεκριμένη έκδοση ενός βιβλίου μπορεί να περιέχει πολλά αναγνωριστικά όπως isbn 10 ψηφίων, isbn 13 ψηφίων καθώς και άλλα αναγνωριστικά που αποδίδονται από διάφορες εταιρείες όπως η google και η amazon. Γι` αυτό το σκοπό δημιουργήθηκε ο συγκεκριμένος πίνακας για να αποτυπώσει τις συγκεκριμένες πληροφορίες. Το πρωτεύον κλειδί του πίνακα είναι σύνθετο και αποτελείται από το edition-id (που είναι ταυτόχρονα και ξένο κλειδί που αποτυπώνει την σύνδεση με τον πίνακα editions) και από το type (Αυτό συμβαίνει διότι το ίδιο αναγνωριστικό (π.χ. το isbn 13 χαρακτήρων) δεν μπορεί να έχει δύο διαφορετικές τιμές για την ίδια έκδοση του βιβλίου). Ακόμα καταγράφεται η τιμή του αναγνωριστικού καθώς και η γλώσσα στην οποία είναι γραμμένη η συγκεκριμένη έκδοση του βιβλίου.
 \end{landscape}
 
 
@@ -336,7 +358,7 @@
 \end{center}
 \end{table}
 
-Ο πίνακας ebook (βλ. πίνακα \ref{table:db_table:ebook}) είναι ομοίως με τον πίνακα paper ένας πίνακας ειδίκευσης ο οποίος αποτυπώνει τις επιπλέον πληροφορίες που χρειάζονται οι ηλεκτρονικές εκδόσεις. Συγκεκριμένα αποθηκεύει στο οποίο είναι αποθηκευμένα τα αρχεία των ηλεκτρονικών βιβλίων καθώς το όνομα του αρχείου του εξωφύλλου του βιβλίου. Ομοίως περιέχει και το edition-id το οποίο είναι ταυτόχρονα πρωτεύον και ξένο κλειδί που ενώνει τον συγκεκριμένο πίνακα με τον πίνακα editions. 
+Ο πίνακας ebook (βλ. πίνακα \ref{table:db_table:ebook}) είναι ομοίως με τον πίνακα paper ένας πίνακας ειδίκευσης ο οποίος αποτυπώνει τις επιπλέον πληροφορίες που χρειάζονται οι ηλεκτρονικές εκδόσεις. Συγκεκριμένα αποθηκεύει το path στο οποίο είναι αποθηκευμένα τα αρχεία των ηλεκτρονικών βιβλίων καθώς το όνομα του αρχείου του εξωφύλλου του βιβλίου. Ομοίως περιέχει και το edition-id το οποίο είναι ταυτόχρονα πρωτεύον και ξένο κλειδί που ενώνει τον συγκεκριμένο πίνακα με τον πίνακα editions. 
 \end{landscape}
 
 \begin{landscape}
@@ -423,7 +445,7 @@
     edition-id & INT UNSIGNED & 0 έως 4294967295 & Ξένο κλειδί του πίνακα. Χρησιμοποιείται για την υλοποίηση μίας 1:Ν σχέσης με τον πίνακα books & ΟΧΙ & ΟΧΙ & NAI \\ \hline
     format & VARCHAR(10) &  Όλα τα Αλφαριθμητικά ως 100 χαρακτήρες & Πεδίο που περιγράφει το format του ηλεκτρονικού βιβλίου & OXI & ΟΧΙ & ΟΧΙ \\ \hline
     size & INT UNSIGNED & 0 έως 4294967295 & Πεδίο που περιγράφει το μέγεθος του ηλεκτρονικού βιβλίου σε bytes & OXI & ΟΧΙ & ΟΧΙ \\ \hline
-    name & VARCHAR(10) &  Όλα τα Αλφαριθμητικά ως 100 χαρακτήρες & Πεδίο που περιγράφει το όνομα του αρχείου του ηλεκτρονικού βιβλίου & OXI & ΟΧΙ & ΟΧΙ \\ \hline
+    name & VARCHAR(50) &  Όλα τα Αλφαριθμητικά ως 50 χαρακτήρες & Πεδίο που περιγράφει το όνομα του αρχείου του ηλεκτρονικού βιβλίου & OXI & ΟΧΙ & ΟΧΙ \\ \hline
   \end{tabular}
 \caption{Ο πίνακας data.}
 \label{table:db_table:data}
@@ -523,7 +545,7 @@
 
 Η κανονικοποίηση του σχήματος της βάσης δεδομένων αποτελεί βασικό βήμα κατά το σχεδιασμό μίας βάσης. Κύριος στόχος της κανονικοποίησης είναι η κατάργηση του πλεονασμού των δεδομένων, ο οποίος δημιουργεί προβλήματα κατά τις εισαγωγές, διαγραφές και ενημερώσεις δεδομένων. Επιπλέον, απαιτείται περισσότερος χώρος για την αποθήκευση των δεδομένων \cite{baseis_manolopoulos, wiki:normalization}. 
 
-Η κανονικοποίηση στηρίζεται στη θεωρία συναρτησιακών εξαρτήσεων. Μία συναρτησιακή εξάρτηση συμβολίζεται με $X \rightarrow Y$ και δηλώνει ότι το σύνολο χαρακτηριστικών $Y$ είναι συναρτησιακά εξαρτώμενο από το σύνολο χαρακτηριστικών του $X$. Αυτό σημαίνει ότι αν δύο γραμμές του πίνακα έχουν ίδιες τιμές για τα χαρακτηριστικά του $X$, τε πρέπει να έχουν ίδιες τιμές για τα χαρακτηριστικά του $Y$ \cite{baseis_manolopoulos}.
+Η κανονικοποίηση στηρίζεται στη θεωρία συναρτησιακών εξαρτήσεων. Μία συναρτησιακή εξάρτηση συμβολίζεται με $X \rightarrow Y$ και δηλώνει ότι το σύνολο χαρακτηριστικών $Y$ είναι συναρτησιακά εξαρτώμενο από το σύνολο χαρακτηριστικών του $X$. Αυτό σημαίνει ότι αν δύο γραμμές του πίνακα έχουν ίδιες τιμές για τα χαρακτηριστικά του $X$, τότε πρέπει να έχουν ίδιες τιμές για τα χαρακτηριστικά του $Y$ \cite{baseis_manolopoulos}.
 
 Οι κανονικές μορφές προκύπτουν με διαδοχικές διασπάσεις των πινάκων της βάσης σε απλούστερους. Η απλούστερη κανονική μορφή είναι η πρώτη κανονική μορφή (1NF), ενώ η πέμπτη κανονική μορφή (5NF) είναι η πλέον περιοριστική. Στην πράξη, οι πίνακες κανονικοποιούνται συνήθως μέχρι την κανονική μορφή Boyce-Codd (BCNF) \cite{baseis_manolopoulos}.
 
@@ -532,45 +554,49 @@
 Στο σχήμα μας η συναρτησιακές εξαρτήσεις είναι οι παρακάτω:
 \begin{itemize}
 \item $R_1$(\underline{id(books)}, title, description, category)
-\item $R_2$(\underline{id(editions)}, book-id, publisher-id, edition, date)
-\item $R_3$(\underline{edition-id}, \underline{type}, value, language)
-\item $R_4$(\underline{id(publisher)}, name)
-\item $R_5$(\underline{id(author)}, name)
-\item $R_6$(\underline{author-id}, \underline{book-id})
-\item $R_7$(\underline{edition-id(paper)}, banding)
-\item $R_8$(\underline{edition-id(ebook)}, path, cover)
-\item $R_9$(\underline{id(forms)})
-\item $R_10$(\underline{form-id(paperbooks)}, edition-id, location)
-\item $R_11$(\underline{form-id(data)}, edition-id, format, size, name)
-\item $R_12$(\underline{id(users)}, name)
-\item $R_13$(\underline{form-id}, \underline{user-id})
-\item $R_14$(\underline{id(tags)}, name)
-\item $R_15$(\underline{tag-id}, \underline{book-id}, \underline{user-id})
+\item $R_2$(\underline{book-id}, \underline{type})
+\item $R_3$(\underline{id(editions)}, book-id, publisher-id, edition, date)
+\item $R_4$(\underline{edition-id}, \underline{type}, value, language)
+\item $R_5$(\underline{id(publisher)}, name)
+\item $R_6$(\underline{id(author)}, name)
+\item $R_7$(\underline{author-id}, \underline{book-id})
+\item $R_8$(\underline{edition-id(paper)}, banding)
+\item $R_9$(\underline{edition-id(ebook)}, path, cover)
+\item $R_{10}$(\underline{id(forms)})
+\item $R_{11}$(\underline{form-id(paperbooks)}, edition-id, location)
+\item $R_{12}$(\underline{form-id(data)}, edition-id, format, size, name)
+\item $R_{13}$(\underline{id(users)}, name)
+\item $R_{14}$(\underline{form-id}, \underline{user-id})
+\item $R_{15}$(\underline{id(tags)}, name)
+\item $R_{16}$(\underline{tag-id}, \underline{book-id}, \underline{user-id})
 \end{itemize}
 
 Όπως παρατηρούμε σε όλες τις συναρτησιακές εξαρτήσεις τα κλειδιά είναι σωστά ορισμένα οπότε δεν χρειάζεται περαιτέρω διάσπαση των πινάκων της βάσης. Επομένως αφού είναι BCNF τότε είναι και 3NF κανονική μορφή.
 
 \section{Υλοποίηση της Βάσης Δεδομένων}
 
+Σε αυτή την ενότητα περιγράφεται η υλοποίηση της βάσης δεδομένων στο ΣΔΒΔ της MariaDB η οποία είναι ένα fork της MySQL.
 
+\subsection{Δημιουργία ειδικού χρήστη}
+
+Σαν πρώτο βήμα είναι η δημιουργία ειδικού χρήστη για την βάση έτσι ώστε να μην χρησιμοποιούμε συνέχεια τον υπερχρήστη. Για την επίτευξη αυτού του σκοπού πληκτρολογούμε στο terminal τα παρακάτω: 
 
 \begin{minted}{bash}
 $ mysql --user=root --password
 Enter password: 
 \end{minted} 
-
 %%$
+
+Και αφού έχουμε μπει στην βάση δημιουργούμε ένα καινούργιο χρήστη και μία νέα βάση και δίνουμε στον χρήστη την δυνατότητα να την τροποποιεί. Όλα αυτά επιτυγχάνονται με τα παρακάτω:
 
 \begin{minted}[breaklines=true]{mysql}
 MariaDB [(none)]> CREATE USER 'book'@'localhost' IDENTIFIED BY 'book_password' ;
-
 MariaDB [(none)]> GRANT USAGE ON *.* TO 'book'@'localhost' IDENTIFIED BY 'book_password' WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
-
-MariaDB [(none)]> CREATE DATABASE `book` ;
-
+MariaDB [(none)]> CREATE DATABASE `book` CHARACTER SET utf8 COLLATE utf8_general_ci;
 MariaDB [(none)]> GRANT ALL PRIVILEGES ON `book`.* TO 'book'@'localhost';
-
 \end{minted}
+
+Ο λόγος για τον οποίο δημιουργούμε έναν καινούργιο χρήστη είναι για λόγους ασφαλείας έτσι ώστε να μην χρησιμοποιούμε συνέχεια τον υπερχρήστη. Ακόμα στην νέα βάση προτιμήθηκε να χρησιμοποιηθεί το utf8 έτσι ώστε η βάση μας να υποστηρίζει και τα ελληνικά. Μετά την δημιουργία του καινούργιου χρήστη ξαναμπαίνουμε στο ΣΔΒΔ χρησιμοποιώντας τον καινούργιο χρήστη:
 
 \begin{minted}{bash}
 $ mysql --user=book --password
@@ -578,6 +604,8 @@ Enter password:
 \end{minted} 
 
 %%$
+
+Παρατηρούμε ότι στις μόνες βάσεις που έχει πρόσβαση ο συγκεκριμένος χρήστης είναι η βάση που δημιουργήσαμε πριν και η βάση που είναι δημιουργημένη από την MariaDB και περιέχει πληροφορίες για την βάση.
 
 \begin{minted}[breaklines=true]{mysql}
 MariaDB [(none)]> show databases;
@@ -588,22 +616,30 @@ MariaDB [(none)]> show databases;
 | book               |
 +--------------------+
 2 rows in set (0.00 sec)
+\end{minted}
 
+Μετά αλλάζουμε την βάση και χρησιμοποιούμε την καινούργια βάση που δημιουργήθηκε (μετά από κάθε εντολή δημιουργίας φαίνεται και η περιγραφή του πίνακα μέσα από την MariaDB):
+
+\begin{minted}[breaklines=true]{mysql}
 MariaDB [(none)]> use book;
 Database changed
 MariaDB [book]> 
-
 \end{minted}
+
+
+\subsection{Δημιουργία πινάκων}
+
+Ύστερα δημιουργούμε του πίνακες που αναφέραμε αναλυτικά στην ενότητα \ref{table_analysis}. Αυτό επιτυγχάνετε με τις παρακάτω εντολές:
 
 \begin{minted}[breaklines=true]{mysql}
 MariaDB [book]> CREATE TABLE books (
-    -> id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    -> id int UNSIGNED NOT NULL AUTO_INCREMENT,
     -> title VARCHAR(100) NOT NULL,
     -> description TEXT NOT NULL,
     -> PRIMARY KEY (id) );
-Query OK, 0 rows affected (0.15 sec)
+Query OK, 0 rows affected (0.12 sec)
 
-MariaDB [book]> describe BOOKS;
+MariaDB [book]> describe books;
 +-------------+------------------+------+-----+---------+----------------+
 | Field       | Type             | Null | Key | Default | Extra          |
 +-------------+------------------+------+-----+---------+----------------+
@@ -611,33 +647,451 @@ MariaDB [book]> describe BOOKS;
 | title       | varchar(100)     | NO   |     | NULL    |                |
 | description | text             | NO   |     | NULL    |                |
 +-------------+------------------+------+-----+---------+----------------+
-3 rows in set (0.00 sec)
+3 rows in set (0.01 sec)
+\end{minted}
 
+\begin{minted}[breaklines=true]{mysql}
+MariaDB [book]> CREATE TABLE categories (
+    -> book_id INT UNSIGNED NOT NULL,
+    -> type VARCHAR(30),
+    -> PRIMARY KEY (book_id, type) );
+Query OK, 0 rows affected (0.06 sec)
+
+MariaDB [book]> describe categories;
++---------+------------------+------+-----+---------+-------+
+| Field   | Type             | Null | Key | Default | Extra |
++---------+------------------+------+-----+---------+-------+
+| book_id | int(10) unsigned | NO   | PRI | NULL    |       |
+| type    | varchar(30)      | NO   | PRI |         |       |
++---------+------------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+\end{minted}
+
+
+\begin{minted}[breaklines=true]{mysql}
+MariaDB [book]> CREATE TABLE categories (
+    -> book_id INT UNSIGNED NOT NULL,
+    -> type VARCHAR(30),
+    -> PRIMARY KEY (book_id,type),
+    -> FOREIGN KEY (book_id) REFERENCES books(id) );
+Query OK, 0 rows affected (0.05 sec)
+
+
+MariaDB [book]> describe categories;
++---------+------------------+------+-----+---------+-------+
+| Field   | Type             | Null | Key | Default | Extra |
++---------+------------------+------+-----+---------+-------+
+| book_id | int(10) unsigned | NO   | PRI | NULL    |       |
+| type    | varchar(30)      | NO   | PRI |         |       |
++---------+------------------+------+-----+---------+-------+
+2 rows in set (0.02 sec)
+\end{minted}
+
+\begin{minted}[breaklines=true]{mysql}
+MariaDB [book]> CREATE TABLE writes ( 
+    -> author_id INT UNSIGNED NOT NULL, 
+    -> book_id INT UNSIGNED NOT NULL, 
+    -> PRIMARY KEY (author_id, book_id), 
+    -> FOREIGN KEY (book_id) REFERENCES books(id), 
+    -> FOREIGN KEY (author_id) REFERENCES authors(id) );
+Query OK, 0 rows affected (0.06 sec)
+
+MariaDB [book]> describe writes;
++-----------+------------------+------+-----+---------+-------+
+| Field     | Type             | Null | Key | Default | Extra |
++-----------+------------------+------+-----+---------+-------+
+| author_id | int(10) unsigned | NO   | PRI | NULL    |       |
+| book_id   | int(10) unsigned | NO   | PRI | NULL    |       |
++-----------+------------------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+\end{minted}
+
+\begin{minted}[breaklines=true]{mysql}
+MariaDB [book]> CREATE TABLE publishers ( 
+    -> id INT UNSIGNED NOT NULL AUTO_INCREMENT, 
+    -> name VARCHAR(50) NOT NULL, 
+    -> PRIMARY KEY (id) );
+Query OK, 0 rows affected (0.03 sec)
+
+MariaDB [book]> describe publishers;
++-------+------------------+------+-----+---------+----------------+
+| Field | Type             | Null | Key | Default | Extra          |
++-------+------------------+------+-----+---------+----------------+
+| id    | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(50)      | NO   |     | NULL    |                |
++-------+------------------+------+-----+---------+----------------+
+2 rows in set (0.00 sec)
 
 \end{minted}
 
 \begin{minted}[breaklines=true]{mysql}
-MariaDB [book]> CREATE TABLE identifiers (
-    -> book_id INT UNSIGNED NOT NULL, 
-    -> type VARCHAR(50) NOT NULL, 
-    -> value VARCHAR(50) NOT NULL, 
-    -> language CHAR(2) NOT NULL, 
-    -> FOREIGN KEY (book_id) REFERENCES BOOKS(id) );
-Query OK, 0 rows affected (0.07 sec)
+MariaDB [book]> CREATE TABLE editions ( 
+    -> id INT UNSIGNED NOT NULL,
+    -> book_id INT UNSIGNED NOT NULL AUTO_INCREMENT, 
+    -> publisher_id INT UNSIGNED NOT NULL, 
+    -> edition INT UNSIGNED, date DATE, 
+    -> PRIMARY KEY (id), 
+    -> FOREIGN KEY (book_id) REFERENCES books(id), 
+    -> FOREIGN KEY (publisher_id) REFERENCES publishers(id) );
+Query OK, 0 rows affected (0.09 sec)
 
-
-MariaDB [book]> describe identifiers;
-+----------+------------------+------+-----+---------+-------+
-| Field    | Type             | Null | Key | Default | Extra |
-+----------+------------------+------+-----+---------+-------+
-| book_id  | int(10) unsigned | NO   | MUL | NULL    |       |
-| type     | varchar(50)      | NO   |     | NULL    |       |
-| value    | varchar(50)      | NO   |     | NULL    |       |
-| language | char(2)          | NO   |     | NULL    |       |
-+----------+------------------+------+-----+---------+-------+
-4 rows in set (0.00 sec)
+MariaDB [book]> describe editions;
++--------------+------------------+------+-----+---------+----------------+
+| Field        | Type             | Null | Key | Default | Extra          |
++--------------+------------------+------+-----+---------+----------------+
+| id           | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
+| book_id      | int(10) unsigned | NO   | MUL | NULL    |                |
+| publisher_id | int(10) unsigned | NO   | MUL | NULL    |                |
+| edition      | int(10) unsigned | YES  |     | NULL    |                |
+| date         | date             | YES  |     | NULL    |                |
++--------------+------------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
 
 \end{minted}
+
+\begin{minted}[breaklines=true]{mysql}
+MariaDB [book]> CREATE TABLE identifiers ( 
+    -> edition_id INT UNSIGNED NOT NULL, 
+    -> type VARCHAR(15) NOT NULL, 
+    -> value VARCHAR(30) NOT NULL, 
+    -> language CHAR(2) NOT NULL, 
+    -> PRIMARY KEY (edition_id, type), 
+    -> FOREIGN KEY (edition_id) REFERENCES editions(id) );
+Query OK, 0 rows affected (0.05 sec)
+
+MariaDB [book]> describe identifiers;
++------------+------------------+------+-----+---------+-------+
+| Field      | Type             | Null | Key | Default | Extra |
++------------+------------------+------+-----+---------+-------+
+| edition_id | int(10) unsigned | NO   | PRI | NULL    |       |
+| type       | varchar(15)      | NO   | PRI | NULL    |       |
+| value      | varchar(30)      | NO   |     | NULL    |       |
+| language   | char(2)          | NO   |     | NULL    |       |
++------------+------------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+\end{minted}
+
+\begin{minted}[breaklines=true]{mysql}
+MariaDB [book]> CREATE TABLE paper (
+    -> edition_id INT UNSIGNED NOT NULL,
+    -> banding VARCHAR(50) NOT NULL,
+    -> PRIMARY KEY (edition_id),
+    -> FOREIGN KEY (edition_id) REFERENCES editions(id) );
+Query OK, 0 rows affected (0.04 sec)
+
+MariaDB [book]> describe paper;
++------------+------------------+------+-----+---------+-------+
+| Field      | Type             | Null | Key | Default | Extra |
++------------+------------------+------+-----+---------+-------+
+| edition_id | int(10) unsigned | NO   | PRI | NULL    |       |
+| banding    | varchar(50)      | NO   |     | NULL    |       |
++------------+------------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+\end{minted}
+
+\begin{minted}[breaklines=true]{mysql}
+MariaDB [book]> CREATE TABLE ebook (
+    -> edition_id INT UNSIGNED NOT NULL,
+    -> path VARCHAR(100) NOT NULL,
+    -> cover VARCHAR(30),
+    -> PRIMARY KEY (edition_id),
+    -> FOREIGN KEY (edition_id) REFERENCES editions(id) );
+Query OK, 0 rows affected (0.04 sec)
+
+MariaDB [book]> describe ebook;
++------------+------------------+------+-----+---------+-------+
+| Field      | Type             | Null | Key | Default | Extra |
++------------+------------------+------+-----+---------+-------+
+| edition_id | int(10) unsigned | NO   | PRI | NULL    |       |
+| path       | varchar(100)     | NO   |     | NULL    |       |
+| cover      | varchar(30)      | YES  |     | NULL    |       |
++------------+------------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+\end{minted}
+
+\begin{minted}[breaklines=true]{mysql}
+MariaDB [book]> CREATE TABLE forms (
+    -> id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    -> PRIMARY KEY (id) );
+Query OK, 0 rows affected (0.05 sec)
+
+MariaDB [book]> describe forms;
++-------+------------------+------+-----+---------+----------------+
+| Field | Type             | Null | Key | Default | Extra          |
++-------+------------------+------+-----+---------+----------------+
+| id    | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
++-------+------------------+------+-----+---------+----------------+
+1 row in set (0.01 sec)
+
+\end{minted}
+
+\begin{minted}[breaklines=true]{mysql}
+MariaDB [book]> CREATE TABLE paperbooks (
+    -> form_id INT UNSIGNED NOT NULL,
+    -> edition_id INT UNSIGNED NOT NULL,
+    -> location VARCHAR(100),
+    -> PRIMARY KEY (form_id),
+    -> FOREIGN KEY (form_id) REFERENCES forms(id),
+    -> FOREIGN KEY (edition_id) REFERENCES paper(edition_id) );
+Query OK, 0 rows affected (0.08 sec)
+
+MariaDB [book]> describe paperbooks;
++------------+------------------+------+-----+---------+-------+
+| Field      | Type             | Null | Key | Default | Extra |
++------------+------------------+------+-----+---------+-------+
+| form_id    | int(10) unsigned | NO   | PRI | NULL    |       |
+| edition_id | int(10) unsigned | NO   | MUL | NULL    |       |
+| location   | varchar(100)     | YES  |     | NULL    |       |
++------------+------------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+\end{minted}
+
+\begin{minted}[breaklines=true]{mysql}
+MariaDB [book]> CREATE TABLE data ( 
+    -> form_id INT UNSIGNED NOT NULL, 
+    -> edition_id INT UNSIGNED NOT NULL, 
+    -> format VARCHAR(10) NOT NULL, 
+    -> size INT UNSIGNED NOT NULL, 
+    -> name VARCHAR(50) NOT NULL, 
+    -> PRIMARY KEY (form_id), 
+    -> FOREIGN KEY (form_id) REFERENCES forms(id), 
+    -> FOREIGN KEY (edition_id) REFERENCES ebook(edition_id) );
+Query OK, 0 rows affected (0.06 sec)
+
+MariaDB [book]> describe ebook;
++------------+------------------+------+-----+---------+-------+
+| Field      | Type             | Null | Key | Default | Extra |
++------------+------------------+------+-----+---------+-------+
+| edition_id | int(10) unsigned | NO   | PRI | NULL    |       |
+| path       | varchar(100)     | NO   |     | NULL    |       |
+| cover      | varchar(30)      | YES  |     | NULL    |       |
++------------+------------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+\end{minted}
+
+\begin{minted}[breaklines=true]{mysql}
+MariaDB [book]> CREATE TABLE users (
+    -> id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    -> name VARCHAR(50) NOT NULL,
+    -> PRIMARY KEY (id) );
+Query OK, 0 rows affected (0.06 sec)
+
+MariaDB [book]> describe users;
++-------+------------------+------+-----+---------+----------------+
+| Field | Type             | Null | Key | Default | Extra          |
++-------+------------------+------+-----+---------+----------------+
+| id    | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(50)      | NO   |     | NULL    |                |
++-------+------------------+------+-----+---------+----------------+
+2 rows in set (0.01 sec)
+
+\end{minted}
+
+\begin{minted}[breaklines=true]{mysql}
+MariaDB [book]> CREATE TABLE tags ( 
+    -> id INT UNSIGNED NOT NULL AUTO_INCREMENT, 
+    -> name VARCHAR(50) NOT NULL, 
+    -> PRIMARY KEY (id) );
+Query OK, 0 rows affected (0.05 sec)
+
+MariaDB [book]> describe tags;
++-------+------------------+------+-----+---------+----------------+
+| Field | Type             | Null | Key | Default | Extra          |
++-------+------------------+------+-----+---------+----------------+
+| id    | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(50)      | NO   |     | NULL    |                |
++-------+------------------+------+-----+---------+----------------+
+2 rows in set (0.01 sec)
+
+\end{minted}
+
+\begin{minted}[breaklines=true]{mysql}
+MariaDB [book]> CREATE TABLE has_users ( 
+    -> form_id INT UNSIGNED NOT NULL, 
+    -> user_id INT UNSIGNED NOT NULL, 
+    -> PRIMARY KEY (form_id, user_id), 
+    -> FOREIGN KEY (form_id) REFERENCES forms(id), 
+    -> FOREIGN KEY (user_id) REFERENCES users(id) );
+Query OK, 0 rows affected (0.06 sec)
+
+MariaDB [book]> describe has_users;
++---------+------------------+------+-----+---------+-------+
+| Field   | Type             | Null | Key | Default | Extra |
++---------+------------------+------+-----+---------+-------+
+| form_id | int(10) unsigned | NO   | PRI | NULL    |       |
+| user_id | int(10) unsigned | NO   | PRI | NULL    |       |
++---------+------------------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+\end{minted}
+
+\begin{minted}[breaklines=true]{mysql}
+MariaDB [book]> CREATE TABLE has_tags ( 
+    -> tag_id INT UNSIGNED NOT NULL, 
+    -> book_id INT UNSIGNED NOT NULL, 
+    -> user_id INT UNSIGNED NOT NULL, 
+    -> PRIMARY KEY (tag_id, book_id, user_id), 
+    -> FOREIGN KEY (tag_id) REFERENCES tags(id), 
+    -> FOREIGN KEY (book_id) REFERENCES books(id), 
+    -> FOREIGN KEY (user_id) REFERENCES users(id) );
+Query OK, 0 rows affected (0.06 sec)
+
+MariaDB [book]> describe has_tags;
++---------+------------------+------+-----+---------+-------+
+| Field   | Type             | Null | Key | Default | Extra |
++---------+------------------+------+-----+---------+-------+
+| tag_id  | int(10) unsigned | NO   | PRI | NULL    |       |
+| book_id | int(10) unsigned | NO   | PRI | NULL    |       |
+| user_id | int(10) unsigned | NO   | PRI | NULL    |       |
++---------+------------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+\end{minted}
+
+Μία σύνοψη των πινάκων που υπάρχουν στην βάση γίνεται με την παρακάτω εντολή:
+
+\begin{minted}[breaklines=true]{mysql}
+MariaDB [book]> show tables;
++----------------+
+| Tables_in_book |
++----------------+
+| authors        |
+| books          |
+| categories     |
+| data           |
+| ebook          |
+| editions       |
+| forms          |
+| has_tags       |
+| has_users      |
+| identifiers    |
+| paper          |
+| paperbooks     |
+| publishers     |
+| tags           |
+| users          |
+| writes         |
++----------------+
+16 rows in set (0.00 sec)
+\end{minted}
+
+\subsection{Εισαγωγή δεδομένων}
+
+Η εισαγωγή των δεδομένων στην βάση γίνεται με την SQL εντολή \mintinline{latex}{INSERT INTO}. Παρακάτω φαίνονται μερικά παραδείγματα εισαγωγής δεδομένων σε μερικούς πίνακες.
+
+\begin{minted}[breaklines=true]{mysql}
+MariaDB [book]> INSERT INTO books (title,description) VALUES ( 
+    -> 'Algorithms: Part I', 
+    -> 'This book is Part I of the fourth edition of Robert Sedgewick and Kevin Wayne’s Algorithms , the leading textbook on algorithms today, widely used in colleges and universities worldwide. Part I contains Chapters 1 through 3 of the book. The fourth edition of Algorithms surveys the most important computer algorithms currently in use and provides a full treatment of data structures and algorithms for sorting, searching, graph processing, and string processing -- including fifty algorithms every programmer should know. In this edition, new Java implementations are written in an accessible modular programming style, where all of the code is exposed to the reader and ready to use.');
+Query OK, 1 row affected (0.02 sec)
+\end{minted}
+
+\begin{minted}[breaklines=true]{mysql}
+MariaDB [book]> INSERT INTO authors (name) VALUES ('Robert Sedgewick');
+Query OK, 1 row affected (0.02 sec)
+MariaDB [book]> INSERT INTO authors (name) VALUES ('Kevin Wayne')
+Query OK, 1 row affected (0.01 sec)
+\end{minted}
+
+\begin{minted}[breaklines=true]{mysql}
+MariaDB [book]> INSERT INTO writes(book_id,author_id) VALUES ('1','1'),('1','2');
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+\end{minted}
+
+\begin{minted}[breaklines=true]{mysql}
+MariaDB [book]> INSERT INTO publishers(name) VALUE ('Addison-Wesley Professional');
+Query OK, 1 row affected (0.01 sec)
+\end{minted}
+
+\begin{minted}[breaklines=true]{mysql}
+MariaDB [book]> INSERT INTO editions (book_id,publisher_id,edition,date) VALUE (
+    -> '1','1','1','2014:02:01');
+Query OK, 1 row affected (0.04 sec)
+\end{minted}
+
+\begin{minted}[breaklines=true]{mysql}
+MariaDB [book]> INSERT INTO ebook (edition_id,path) VALUE ( '1', '/home/books/' );
+Query OK, 1 row affected (0.01 sec)
+\end{minted}
+
+\begin{minted}[breaklines=true]{mysql}
+MariaDB [book]> INSERT INTO data(form_id,edition_id,format,size,name) VALUE
+    -> ('1','1','epub','15','algorithm.epub'),
+    -> ('2','1','pdf','30','algorith.pdf');
+Query OK, 2 rows affected (0.02 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+\end{minted}
+
+\begin{minted}[breaklines=true]{mysql}
+MariaDB [book]> INSERT INTO users(name) VALUE ('Anagnostopoulos Vasilis'),('Katsis Giorgos');
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+\end{minted}
+
+\begin{minted}[breaklines=true]{mysql}
+MariaDB [book]> INSERT INTO has_users VALUE ('1','1'),('1','2');
+Query OK, 2 rows affected (0.02 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+\end{minted}
+
+\subsection{Ερωτήματα}
+
+Παρακάτω παρουσιάζονται μερικά ενδεικτικά ερωτήματα τα οποία μπορούν να απαντηθούν με την συγκεκριμένη βάση.
+
+\begin{itemize}
+
+\item Δείξτε τους συγγραφείς και του τίτλους όλων των βιβλίων που περιέχονται στην βάση δεδομένων.
+\begin{minted}[breaklines=true]{mysql}
+MariaDB [book]> SELECT authors.name, books.title 
+    -> FROM authors, books, writes 
+    -> WHERE books.id = writes.book_id and authors.id = writes.author_id;
+\end{minted}
+
+\item Δείξτε τα βιβλία και τις κατηγορίες στις οποίες ανήκουν όλα τα βιβλία στην βάση δεδομένων.
+\begin{minted}[breaklines=true]{mysql}
+MariaDB [book]> SELECT books.title, categories.type 
+    -> FROM books, categories 
+    -> WHERE books.id = categories.book_id;
+\end{minted}
+
+\item Δείξτε τους τίτλους όλων των ηλεκτρονικών βιβλίων.
+\begin{minted}[breaklines=true]{mysql}
+MariaDB [book]> SELECT DISTINCT books.title
+    -> FROM books, editions, ebook
+    -> WHERE books.id=editions.book_id and editions.id=ebook.edition_id;
+\end{minted}
+
+\item Δείξτε τον τίτλο, το μονοπάτι, το είδος αρχείου, το μέγεθος και το όνομα του αρχείου όλων των ηλεκτρονικών βιβλίων.
+\begin{minted}[breaklines=true]{mysql}
+MariaDB [book]> SELECT books.title, ebook.path, data.format, data.size, data.name 
+    -> FROM books, editions, ebook, data 
+    -> WHERE books.id=editions.book_id and editions.book_id=ebook.edition_id and ebook.edition_id = data.edition_id;
+\end{minted}
+
+\item Δείξτε τον τίτλο, το μονοπάτι, το είδος αρχείου, το μέγεθος και το όνομα του αρχείου όλων των ηλεκτρονικών βιβλίων που ανήκουν στον χρήστη που περιέχεται στο όνομα του "Anagno".
+\begin{minted}[breaklines=true]{mysql}
+MariaDB [book]> SELECT books.title, ebook.path, data.format, data.size, data.name 
+    -> FROM books, editions, ebook, data, forms, has_users, users 
+    -> WHERE books.id=editions.book_id and editions.id=ebook.edition_id and ebook.edition_id=data.edition_id and data.form_id = forms.id and forms.id = has_users.form_id and has_users.user_id = users.id and users.name LIKE '%Anagno%';
+\end{minted}
+
+\item Δείξτε όλα τα αναγνωριστικά όλως των βιβλίων.
+\begin{minted}[breaklines=true]{mysql}
+MariaDB [book]> select books.title, identifiers.type, identifiers.value 
+    ->  FROM books, editions, identifiers 
+    ->  WHERE books.id=editions.book_id and editions.id=identifiers.edition_id;
+\end{minted}
+
+\item Δείξε την τοποθεσία όλων των έντυπων βιβλίων του χρήστη που το όνομα του περιέχει "Anagno".
+\begin{minted}[breaklines=true]{mysql}
+select books.title,paperbooks.location from books,editions,paper,paperbooks,forms,has_users,users where books.id=editions.book_id and editions.id=paper.edition_id and paper.edition_id=paperbooks.edition_id and paperbooks.form_id=forms.id and forms.id=has_users.form_id and has_users.user_id = users.id and users.name like '%Anagno%';
+\end{minted}
+
+\item Δείξε τον αριθμό των διαφορετικών ηλεκτρονικών βιβλίων που έχουν όλοι οι χρήστες.
+\begin{minted}[breaklines=true]{mysql}
+MariaDB [book]> select users.name, count(DISTINCT books.id) AS NUM_OF_EBOOKS from users,has_users,forms,data,ebook,editions,books where (books.id=editions.book_id and editions.id=ebook.edition_id and ebook.edition_id=data.edition_id and data.form_id=forms.id and forms.id=has_users.form_id and has_users.user_id=users.id) group by users.name;
+\end{minted}
+
+\end{itemize}
 
 \phantomsection \label{Βιβλιογραφία}
 \addcontentsline{toc}{section}{Βιβλιογραφία}
