@@ -20,7 +20,8 @@
 
 \setmainfont[]{Ubuntu} % Για τις γραμματοσειρές 
 %\setsansfont[]{Ubuntu} 
-%\setmonofont[]{Ubuntu} 
+\setmonofont[]{DejaVu Sans Mono} 
+
 
 
 %Να δω για να αλλάξω διάφορα
