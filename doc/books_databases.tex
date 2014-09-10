@@ -1040,57 +1040,84 @@ Records: 2  Duplicates: 0  Warnings: 0
 
 \begin{itemize}
 
-\item Δείξτε τους συγγραφείς και του τίτλους όλων των βιβλίων που περιέχονται στην βάση δεδομένων.
+\item Δείξτε τους συγγραφείς και του τίτλους όλων των βιβλίων που περιέχονται στην βάση δεδομένων (βλ. σχήμα \ref{fig:queries_1}).
 \begin{minted}[breaklines=true]{mysql}
 MariaDB [book]> SELECT authors.name, books.title 
     -> FROM authors, books, writes 
     -> WHERE books.id = writes.book_id and authors.id = writes.author_id;
 \end{minted}
 
-\item Δείξτε τα βιβλία και τις κατηγορίες στις οποίες ανήκουν όλα τα βιβλία στην βάση δεδομένων.
+\item Δείξτε τα βιβλία και τις κατηγορίες στις οποίες ανήκουν όλα τα βιβλία στην βάση δεδομένων (βλ. σχήμα \ref{fig:queries_1}).
 \begin{minted}[breaklines=true]{mysql}
 MariaDB [book]> SELECT books.title, categories.type 
     -> FROM books, categories 
     -> WHERE books.id = categories.book_id;
 \end{minted}
 
-\item Δείξτε τους τίτλους όλων των ηλεκτρονικών βιβλίων.
+\item Δείξτε τους τίτλους όλων των ηλεκτρονικών βιβλίων (βλ. σχήμα \ref{fig:queries_1}).
 \begin{minted}[breaklines=true]{mysql}
 MariaDB [book]> SELECT DISTINCT books.title
     -> FROM books, editions, ebook
     -> WHERE books.id=editions.book_id and editions.id=ebook.edition_id;
 \end{minted}
 
-\item Δείξτε τον τίτλο, το μονοπάτι, το είδος αρχείου, το μέγεθος και το όνομα του αρχείου όλων των ηλεκτρονικών βιβλίων.
+\begin{figure}
+\begin{center}
+\resizebox*{\textwidth}{!}{
+\includegraphics{images/queries_1.png}}
+\caption{Screenshot από την εκτέλεση των ερωτημάτων (1)}
+\label{fig:queries_1}
+\end{center}
+\end{figure}
+
+\item Δείξτε τον τίτλο, το μονοπάτι, το είδος αρχείου, το μέγεθος και το όνομα του αρχείου όλων των ηλεκτρονικών βιβλίων (βλ. σχήμα \ref{fig:queries_2}).
 \begin{minted}[breaklines=true]{mysql}
 MariaDB [book]> SELECT books.title, ebook.path, data.format, data.size, data.name 
     -> FROM books, editions, ebook, data 
     -> WHERE books.id=editions.book_id and editions.book_id=ebook.edition_id and ebook.edition_id = data.edition_id;
 \end{minted}
 
-\item Δείξτε τον τίτλο, το μονοπάτι, το είδος αρχείου, το μέγεθος και το όνομα του αρχείου όλων των ηλεκτρονικών βιβλίων που ανήκουν στον χρήστη που περιέχεται στο όνομα του "Anagno".
+\item Δείξτε τον τίτλο, το μονοπάτι, το είδος αρχείου, το μέγεθος και το όνομα του αρχείου όλων των ηλεκτρονικών βιβλίων που ανήκουν στον χρήστη που περιέχεται στο όνομα του "Anagno" (βλ. σχήμα \ref{fig:queries_2}).
 \begin{minted}[breaklines=true]{mysql}
 MariaDB [book]> SELECT books.title, ebook.path, data.format, data.size, data.name 
     -> FROM books, editions, ebook, data, forms, has_users, users 
     -> WHERE books.id=editions.book_id and editions.id=ebook.edition_id and ebook.edition_id=data.edition_id and data.form_id = forms.id and forms.id = has_users.form_id and has_users.user_id = users.id and users.name LIKE '%Anagno%';
 \end{minted}
 
-\item Δείξτε όλα τα αναγνωριστικά όλως των βιβλίων.
+\item Δείξτε όλα τα αναγνωριστικά όλως των βιβλίων (βλ. σχήμα \ref{fig:queries_2}).
 \begin{minted}[breaklines=true]{mysql}
 MariaDB [book]> select books.title, identifiers.type, identifiers.value 
     ->  FROM books, editions, identifiers 
     ->  WHERE books.id=editions.book_id and editions.id=identifiers.edition_id;
 \end{minted}
 
-\item Δείξε την τοποθεσία όλων των έντυπων βιβλίων του χρήστη που το όνομα του περιέχει "Anagno".
+\begin{figure}
+\begin{center}
+\resizebox*{\textwidth}{!}{
+\includegraphics{images/queries_1.png}}
+\caption{Screenshot από την εκτέλεση των ερωτημάτων (2)}
+\label{fig:queries_2}
+\end{center}
+\end{figure}
+
+\item Δείξε την τοποθεσία όλων των έντυπων βιβλίων του χρήστη που το όνομα του περιέχει "Anagno" (βλ. σχήμα \ref{fig:queries_3}).
 \begin{minted}[breaklines=true]{mysql}
 select books.title,paperbooks.location from books,editions,paper,paperbooks,forms,has_users,users where books.id=editions.book_id and editions.id=paper.edition_id and paper.edition_id=paperbooks.edition_id and paperbooks.form_id=forms.id and forms.id=has_users.form_id and has_users.user_id = users.id and users.name like '%Anagno%';
 \end{minted}
 
-\item Δείξε τον αριθμό των διαφορετικών ηλεκτρονικών βιβλίων που έχουν όλοι οι χρήστες.
+\item Δείξε τον αριθμό των διαφορετικών ηλεκτρονικών βιβλίων που έχουν όλοι οι χρήστες (βλ. σχήμα \ref{fig:queries_3}).
 \begin{minted}[breaklines=true]{mysql}
 MariaDB [book]> select users.name, count(DISTINCT books.id) AS NUM_OF_EBOOKS from users,has_users,forms,data,ebook,editions,books where (books.id=editions.book_id and editions.id=ebook.edition_id and ebook.edition_id=data.edition_id and data.form_id=forms.id and forms.id=has_users.form_id and has_users.user_id=users.id) group by users.name;
 \end{minted}
+
+\begin{figure}
+\begin{center}
+\resizebox*{\textwidth}{!}{
+\includegraphics{images/queries_1.png}}
+\caption{Screenshot από την εκτέλεση των ερωτημάτων (3)}
+\label{fig:queries_3}
+\end{center}
+\end{figure}
 
 \end{itemize}
 
